@@ -5,7 +5,7 @@ lightBox
 
 - LightBox container        ``` ltBox: null ```
 - Dimenstions               ``` dimens: {
-                                    height: 'auto',
+                                    height: 'auto,
                                     width: 'auto'
                                 }
                             ```
@@ -18,12 +18,12 @@ lightBox
                           		}
                           ```
 - Close configration      ``` close: {
-                                esc: true,
-                                layer: true,
-                                nodes : {target:'',event:'click',selector:''},
-                                success : function(){},
-                                returnFocus: true,
-                                anim : {className:'',duration:0}
+- Close on escape key press                                esc: true,
+- Close on bglayer click                                layer: true,
+- Close on these nodes                                nodes : {target:'',event:'click',selector:''},
+- Close callback                              success : function(){},
+- Return focus to target on close                                returnFocus: true,
+- Close css animation class                              anim : {className:'',duration:0}
                             }
                           ```
 
