@@ -14,8 +14,8 @@ lightBox
   - open callback             		``` success :function(){},```
   - open on event             		``` event :'click',```
   - open css animation class  		``` anim :{className:''}```
--                          		``` }```
-                          
+- ```}``
+
 - Close configration      ``` close: {```
   - Close on escape key press       ``` esc: true,```
   - Close on bglayer click          ``` layer: true,```
