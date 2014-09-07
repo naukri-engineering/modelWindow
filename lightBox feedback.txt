@@ -1,0 +1,34 @@
+
+LightBox opened more than once should close in one call only
+ltcont should be created only once irrespective of number of time lightBox included
+
+------------------------------------
+
+Height temp in call
+
+reset form call back function
+
+layer opacity
+
+
+hideAll
+hideLayer closes topmost windowideLayer closes topmost window
+
+create default css features
+
+"use strict";
+
+resize in xp ie8 should not be binded
+
+Manage common features like jqueryui focus on demand
+require.js, grunt (Under Discussion)
+
+layer transion visible on page load
+
+zindesx paramter in call, default 10000
+
+open object should have event property
+	event : 'click|keypress'
+
+
+close closeAll

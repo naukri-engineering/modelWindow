@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+/** Advance Animation CSS */
+.flipOpen,.flipClose{
+	-ms-transform-origin:50% 0 0; 
+	-webkit-transform-origin:50% 0 0;
+    transform-origin: 50% 0 0;	
+}
+
+@-webkit-keyframes flipOpen { 
+	0% {-webkit-transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 
+	100% {-webkit-transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+} 
+@-moz-keyframes flipOpen { 
+	0% {-moz-transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 
+	100% {-moz-transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+} 
+@-o-keyframes flipOpen { 
+	0% {-o-transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 
+	100% {-o-transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+}
+@keyframes flipOpen { 
+	0% {transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 	
+	100% {transform: perspective(1300px) rotateX(0deg); opacity: 1;}
+} 
+.flipOpen { 
+	-webkit-backface-visibility: visible !important; 
+	-webkit-animation: 0.3s flipOpen; 
+	-moz-backface-visibility: visible !important; 
+	-moz-animation: 0.3s flipOpen; 
+	-o-backface-visibility: visible !important; 
+	-o-animation: 0.3s flipOpen;
+	backface-visibility: visible !important; 
+	animation: 0.3s flipOpen; 
+}
+
+@-webkit-keyframes flipClose { 
+	0% {-webkit-transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+	100% {-webkit-transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 
+} 
+@-moz-keyframes flipClose { 
+	0% {-moz-transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+	100% {-moz-transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 
+} 
+@-o-keyframes flipClose { 
+	0% {-o-transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+	100% {-o-transform:perspective(1300px) rotateX(-60deg); opacity: 0;} 
+}
+@keyframes flipClose { 
+	0% {transform: perspective(1300px) rotateX(0deg); opacity: 1;} 
+	100% {transform: perspective(1300px) rotateX(-60deg); opacity: 0;} 
+} 
+.flipClose { 
+	-webkit-backface-visibility: visible !important; 
+	-webkit-animation: 0.3s flipClose; 
+	-moz-backface-visibility: visible !important; 
+	-moz-animation: 0.3s flipClose; 
+	-o-backface-visibility: visible !important;
+	-o-animation: 0.3s flipClose;
+	backface-visibility: visible !important; 
+	animation: 0.3s flipClose; 	
+}
+/** Advance Animation */ 

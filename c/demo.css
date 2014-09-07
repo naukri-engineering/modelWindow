@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+.ltLayer {background:#000;}
+.lightbox,.lightbox_open{
+	padding:10px;	
+	border:solid;	
+	background:#FFF;
+}
