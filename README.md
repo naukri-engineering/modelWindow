@@ -12,9 +12,7 @@ Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 **Usage**
 
 ```javascript
-$('#trigger').lightBox({
-    "ltBox":$('#container')
-});
+$('.trigger').lightBox({"ltBox":$('#container')});
 ```
 
 **Options**
@@ -36,68 +34,38 @@ close            | `{}`      |                   | Object   | Params to close li
                  |  anim     | `{"className":"","duration":0}` | Object  | classname to add animation while close and duration of close animation. *Require by plugin.
                  
                   
-**Events**
+**Methods**
 
-`accordion.open` fires when any accordion opens
+`$('#trigger').lightBox().open()` Open lightBox
 
-`accordion.close` fires when any accordion closes
+`$('#trigger').lightBox().close()` Close lightBox
+
+`$.fn.lightBox.close()` Close topmost lightBox.
+
+`$.fn.lightBox.closeAll()` Close all lightBox.
+`
 
 **Sample Structure**
 
-For a simple accordion/dropdown, use the following structure/data-attributes:
+For a simple lightBox, add class .lightBox to container:
 
 ```html
-<div data-accordion>
-    <div data-control>Control</div>
-    <div data-content>
-        <div>Row</div>
-        <div>Row</div>
-        <div>Row</div>
-    </div>
+<div id="container" class="lightBox">
+    Show content in lightBox
 </div>
 ```
 
-For a group of accordions, you can use the `data-accordion-group` attribute on a parent, this will allow you to activate/deactivate the single open behavior by setting `singleOpen` to true/false.
+For a group of trigger which open single lightBox
 
 ```html
-<div data-accordion-group>
-    <div class="accordion" data-accordion>
-        <div data-control>Control</div>
-        <div data-content>
-            <div>Row</div>
-            <div>Row</div>
-            <div>Row</div>
-        </div>
-    </div>
-    <div class="accordion" data-accordion>
-        <div data-control>Control</div>
-        <div data-content>
-            <div>Row</div>
-            <div>Row</div>
-            <div>Row</div>
-        </div>
-    </div>
+<span class="trigger"> Trigger 1 </span>
+<span class="trigger"> Trigger 3 </span>
+<span class="trigger"> Trigger 3 </span>
+<div id="container" class="lightBox">
+    Show content in lightBox
 </div>
 ```
 
-## Confgration ##
-
-- LightBox container        ``` ltBox: null ```
-- Dimenstions               ``` dimens:```
-  -                                 ```height: 'auto,```
-  -                                 ```width: 'auto'```
-
-- Reset form tags inside lightbox   ``` resetForm: false ```
-- Fix lightBox on screen  ``` fixed: false ```
-- Open configration       ```  open:```
-  - open callback             		``` success :function(){},```
-  - open on event             		``` event :'click',```
-  - open css animation class  		``` anim :{className:''}```
-
-- Close configration      ``` close:```
-  - Close on escape key press       ``` esc: true,```
-  - Close on bglayer click          ``` layer: true,```
-  - Close on these nodes            ``` nodes : {target:'',event:'click',selector:''},```
-  - Close callback                  ``` success : function(){},```
-  - Return focus to target on close ``` returnFocus: true,```
-  - Close css animation class       ``` anim : {className:'',duration:0}```
+```javascript
+$('.trigger').lightBox({"ltBox":$('#container')});
+```
