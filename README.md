@@ -22,7 +22,7 @@ Name             | Default                       | Type              | Descripti
 ltBox            | `null`                        | Element | Node to be opened as lightBox               
 dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox                  
 resetForm        | `false`                       | Boolean | Reset FORM inside lightBox at open & close
-fixed            | `false`                       | Boolean | Position lightbox as absolute center or fixed.
+fixed            | `false`                       | Boolean | Position lightbox as absolute or fixed.
 open             | `{...}`                       | Object  | Opening properties 
                  |  success  : `function(){}`    | Function | Open success callback
                  |  event    : `"click"`         | String   | Open trigger event.
