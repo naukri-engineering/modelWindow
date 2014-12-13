@@ -58,15 +58,17 @@ For a simple lightBox, add class .lightBox to container:
 
 For a group of trigger which open single lightBox
 
+```javascript
+$('.trigger').lightBox({"ltBox":$('#container')});
+```
+
 ```html
 <span class="trigger"> Trigger 1 </span>
-<span class="trigger"> Trigger 3 </span>
-<span class="trigger"> Trigger 3 </span>
+<span class="trigger"> Trigger 2 </span>
+
 <div id="container" class="lightBox">
     Show content in lightBox
 </div>
-```
 
-```javascript
-$('.trigger').lightBox({"ltBox":$('#container')});
+<span class="trigger"> Trigger 3 </span>
 ```
