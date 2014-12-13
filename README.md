@@ -25,16 +25,16 @@ ltBox            | `null`                            | Element | HTML element to
 dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox container.                  resetForm        | `false`                      | Boolean | Don't reset form inside lightBox on open and close.
 fixed            | `false`                      | Boolean | Show lightBox in center of screen at absolute position.
 open             | `{}`                         | Object  | Params to open lightBox
-                 |  `success` | function(){}    | Function | Open callback.
-                 | `event`    | `"click"`       | String   | Event to bind on trigger to opens lightBox.
-                 | `anim`     | `{"className":""}`| Object | classname to add animation while open.                  
+                 |  success  | `function(){}`   | Function | Open callback.
+                 |  event    | `"click"`        | String   | Event to bind on trigger to opens lightBox.
+                 |  anim     | `{"className":""}`| Object | classname to add animation while open.                  
 close            | `{}`                         | Object   | Params to close lightBox.                 
-                 | `esc`| `true`                | Boolean  | Close lightBox on escape key press.
-                 | `layer`| `true`              | Boolean  | Close lightBox on background layer click.
-                 | `nodes`| `{"target":"","event":"click","selector":""}`| Object  | Close lightBox on click of nodes. Specify selector to bind close using delegation under target.
-                 | `success`| `function(){}`    | Function  | Close callback.
-                 | `returnFocus`| `true`        | Boolean  | Return focus to lightBox trigger element on close.
-                 | `anim`| `{"className":"","duration":0}` | Object  | classname to add animation while close and duration of close animation. *Require by plugin.
+                 |  esc      | `true`           | Boolean  | Close lightBox on escape key press.
+                 | layer     | `true`           | Boolean  | Close lightBox on background layer click.
+                 | nodes     | `{"target":"","event":"click","selector":""}`| Object  | Close lightBox on click of nodes. Specify selector to bind close using delegation under target.
+                 |  success  | `function(){}`    | Function  | Close callback.
+                 |  returnFocus | `true`        | Boolean  | Return focus to lightBox trigger element on close.
+                 |  anim      | `{"className":"","duration":0}` | Object  | classname to add animation while close and duration of close animation. *Require by plugin.
                  
                   
 **Events**
