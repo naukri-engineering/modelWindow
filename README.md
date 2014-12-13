@@ -7,8 +7,6 @@ Jquery lightBox accepts CSS transitions classes to animate opening/closing. It t
 
 Supports IE7+ and modern browsers.
 
-Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
-
 **Usage**
 
 ```javascript
