@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jQuery LightBox</title>
+<link href="c/demo.css" rel="stylesheet">
+<style>
+body{
+	height:1000px;	
+}
+.lightbox{
+	background:white;
+	padding:10px;
+	border-radius:5px;	
+}
+.code{
+	background:#c2c2c2;
+	padding:15px 25px;;
+}
+</style>
+</head>
+
+<body>
+	<div>
+        <h3>Minimum configration</h3>
+		<input id="trigger1" value="Trigger 1" type="button">
+        <div id="container1" class="lightbox">
+           <div class="code">$('#trigger1').lightBox({"ltBox":$('#container1')});</div>
+        </div>
+    </div>
+    
+    <div>
+        <h3>Responsive lightbox</h3>
+		<input id="trigger2" value="Trigger 2" type="button">
+        <div id="container2" class="lightbox">
+			<div class="code">		
+                $('#trigger2').lightBox({
+                    "ltBox":$('#container2'),
+                    "dimens":{"width":"50%"}
+                });        
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h3>Reset form inside lightbox on open or close</h3>
+		<input id="trigger3" value="Trigger 3" type="button">
+        <div id="container3" class="lightbox">
+        	<form>
+            	You are
+            	<input type="radio" name="radio"> Male
+                <input type="radio" name="radio"> Female
+            </form>
+            <div class="code">		
+                $('#trigger3').lightBox({
+                    "ltBox":$('#container3'),
+                    "dimens":{"width":"50%"},
+                    "resetForm":true
+                });  
+            </div>      
+        </div>
+    </div>
+    
+    <div>
+        <h3>Floating lightBox</h3>
+		<input id="trigger4" value="Trigger 4" type="button">
+        <div id="container4" class="lightbox">
+        	<form>
+            	You are
+            	<input type="radio" name="radio"> Male
+                <input type="radio" name="radio"> Female
+            </form>
+            <div class="code">		
+                $('#trigger4').lightBox({
+                    "ltBox":$('#container4'),
+                    "dimens":{"width":"50%"},
+                    "resetForm":true,
+                    "fixed": true
+                });  
+            </div>      
+        </div>
+    </div>
+    
+    <div>
+        <h3>Animate lightBox</h3>
+		<input id="trigger5" value="Trigger 5" type="button">
+        <div id="container5" class="lightbox">
+        	<form>
+            	You are
+            	<input type="radio" name="radio"> Male
+                <input type="radio" name="radio"> Female
+            </form>
+            <div class="code">		
+                $('#trigger5').lightBox({
+                    "ltBox":$('#container5'),
+                    "dimens":{"width":"50%"},
+                    "resetForm":true,
+                    "fixed": true,
+                    "open":{"anim":{"className":"flipOpen"}},
+                    "close":{"anim":{"className":'flipClose',"duration":300}}
+                });            
+             </div>      
+        </div>
+    </div>
+    
+    <div>
+        <h3>Initialize node to close lightBox</h3>
+		<input id="trigger6" value="Trigger 6" type="button">
+        <div id="container6" class="lightbox">
+        	<form>
+            	You are
+            	<input type="radio" name="radio"> Male
+                <input type="radio" name="radio"> Female
+                <input type="button" value="Close" class="close">
+            </form>
+            <div class="code">		
+                $('#trigger6').lightBox({
+                    "ltBox":$('#container6'),
+                    "dimens":{"width":"50%"},
+                    "resetForm":true,
+                    "fixed": true,
+                    "open":{"anim":{"className":"flipOpen"}},
+                    "close":{"nodes":$("#container6 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
+                    "anim":{"className":'flipClose',"duration":300}}	
+                });             
+             </div>      
+        </div>
+    </div>
+    
+     <div>     
+        <h3>Available Methods</h3>
+        <ul class="code">		
+            <li>$('#trigger').lightBox().open() Open lightBox</li>            
+            <li>$('#trigger').lightBox().close() Close lightBox</li>            
+            <li>$.fn.lightBox.close() Close topmost lightBox</li>            
+            <li>$.fn.lightBox.closeAll() Close all lightBox</li> `             
+         </ul>      
+    </div>
+    
+    
+</body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="j/lightBox.js"></script>
+<script src="j/demo.js"></script>
+</html>
