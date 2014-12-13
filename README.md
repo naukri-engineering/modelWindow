@@ -19,21 +19,21 @@ $('.trigger').lightBox({"ltBox":$('#container')});
 
 Name             | Default                       | Type              | Description
 :----------------|:----------------------------- |:----------------- |:-----------
-ltBox            | `null`                        | Element | Node to be opened as lightBox.               
-dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox.                  
-resetForm        | `false`                       | Boolean | Prevent reset of <form> inside lightBox.
-fixed            | `false`                       | Boolean | LightBox will not scroll with page.
-open             | `{...}`                       | Object  | LightBox open properties 
-                 |  success  : `function(){}`    | Function | Open success callback.
-                 |  event    : `"click"`         | String   | Open on event.
-                 |  anim     : `{"className":""}`| Object   | CSS class to add animation on open.                  
-close            | `{}`                          | Object   | Params to close lightBox.                 
+ltBox            | `null`                        | Element | Node to be opened as lightBox               
+dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox                  
+resetForm        | `false`                       | Boolean | Reset FORM inside lightBox at open & close
+fixed            | `false`                       | Boolean | Position lightbox as absolute center or fixed.
+open             | `{...}`                       | Object  | Opening properties 
+                 |  success  : `function(){}`    | Function | Open success callback
+                 |  event    : `"click"`         | String   | Open trigger event.
+                 |  anim     : `{"className":""}`| Object   | CSS animation class added on lightbox at open.
+close            | `{...}`                       | Object   | Closing properties                 
                  |  esc      : `true`            | Boolean  | Close lightBox on escape key press.
                  | layer     : `true`            | Boolean  | Close lightBox on background layer click.
-                 | nodes     : `{"target":"","event":"click","selector":""}`| Object  | Close lightBox on click of nodes. Specify selector to bind close using delegation under target.
-                 |  success  : `function(){}`    | Function  | Close callback.
-                 |  returnFocus : `true`         | Boolean  | Return focus to lightBox trigger element on close.
-                 |  anim     : `{"className":"","duration":0}` | Object  | classname to add animation while close and duration of close animation. *Require by plugin.
+                 | nodes     : `{"target":"","event":"click","selector":""}`| Object  | Define nodes to close lightBox.
+                 |  success  : `function(){}`    | Function  | Close success callback.
+                 |  returnFocus : `true`         | Boolean  | Return focus to trigger element on close.
+                 |  anim     : `{"className":"","duration":0}` | Object  | CSS animation class added on lightbox at close. Duration in ms required by plugin.
                  
                   
 **Methods**
