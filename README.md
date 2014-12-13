@@ -19,13 +19,17 @@ $('#trigger').lightBox({
 
 **Options**
 
-Name             | Default                     | Type    | Description
-:----------------|:--------------------------- |:--------|:-----------
-ltBox            | `null`                      | Element | HTML element to be shown in lightBox.                   
-dimens           | `{height:auto,width:'auto'}`| string  | CSS value for easing.                                    
-controlElement   | `'[data-control]'`         | string  | CSS selector for the element acting as a button.
-contentElement   | `'[data-content]'`         | string  | CSS selector for the element containing hide/show content. 
-groupElement     | `'[data-accordion-group]'` | string  | CSS selector for a parent element containing a group.
+Name             | Default                           | Type    | Description
+:----------------|:---------------------------       |:--------|:-----------
+ltBox            | `null`                            | Element | HTML element to be shown in lightBox.                
+dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox container.                  resetForm        | `false`                      | Boolean | Whether to reset form inside lightBox on open and close.
+fixed            | `false`                      | Boolean | Whether to set CSS position absolute or fixed of lightBox. open             | `{
+                        "sucess":function(){},
+                        "event":"click",
+                        "anim":{"className":""} 
+                    }`                          | Object  | success: Open callback.
+                                                            event: Event on trigger which opens lightBox.
+                                                            anim: classname to add animation while open.
 singleOpen       | `true`                     | boolean | Opens a single accordion a time.
 
 **Events**
