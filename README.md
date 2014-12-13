@@ -19,12 +19,11 @@ $('#trigger').lightBox({
 
 **Options**
 
-Name             | Default                           | Type    | Description
-:----------------|:---------------------------       |:--------|:-----------
-ltBox            | `null`                            | Element | HTML element to be shown in lightBox.                
-dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox container.                  resetForm        | `false`                      | Boolean | Don't reset form inside lightBox on open and close.
-fixed            | `false`                      | Boolean | Show lightBox in center of screen at absolute position.
-open             | `{}`                         | Object  | Params to open lightBox
+Name             | Default                           || Type    | Description
+:----------------|:---------------------------       ||:--------|:-----------
+ltBox            | `null`                            || Element | HTML element to be shown in lightBox.               dimens           | `{"height":"auto","width":"auto"}`|| Object  | Dimensions of lightBox container.                  resetForm        | `false`   |                   | Boolean | Don't reset form inside lightBox on open and close.
+fixed            | `false`   |                   | Boolean | Show lightBox in center of screen at absolute position.
+open             | `{}`      |                   | Object  | Params to open lightBox
                  |  success  | `function(){}`   | Function | Open callback.
                  |  event    | `"click"`        | String   | Event to bind on trigger to opens lightBox.
                  |  anim     | `{"className":""}`| Object | classname to add animation while open.                  
