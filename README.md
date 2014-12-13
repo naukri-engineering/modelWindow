@@ -19,13 +19,14 @@ $('.trigger').lightBox({"ltBox":$('#container')});
 
 Name             | Default                       | Type              | Description
 :----------------|:----------------------------- |:----------------- |:-----------
-ltBox            | `null`                        | Element | HTML element to be shown in lightBox.               
-dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox container.                  resetForm        | `false`                       | Boolean | Don't reset form inside lightBox on open and close.
-fixed            | `false`                       | Boolean | Show lightBox in center of screen at absolute position.
-open             | `{}`                          | Object  | Params to open lightBox
-                 |  success  : `function(){}`    | Function | Open callback.
-                 |  event    : `"click"`         | String   | Event to bind on trigger to opens lightBox.
-                 |  anim     : `{"className":""}`| Object | classname to add animation while open.                  
+ltBox            | `null`                        | Element | Node to be opened as lightBox.               
+dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox.                  
+resetForm        | `false`                       | Boolean | Prevent reset of <form> inside lightBox.
+fixed            | `false`                       | Boolean | LightBox will not scroll with page.
+open             | `{...}`                       | Object  | LightBox open properties 
+                 |  success  : `function(){}`    | Function | Open success callback.
+                 |  event    : `"click"`         | String   | Open on event.
+                 |  anim     : `{"className":""}`| Object   | CSS class to add animation on open.                  
 close            | `{}`                          | Object   | Params to close lightBox.                 
                  |  esc      : `true`            | Boolean  | Close lightBox on escape key press.
                  | layer     : `true`            | Boolean  | Close lightBox on background layer click.
