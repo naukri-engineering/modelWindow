@@ -1,28 +1,28 @@
-jQuery Accordion
+jQuery LightBox
 ================
 
-Responsive, CSS powered, jQuery accordion plugin.
+Customizable, CSS powered, jQuery lightBox plugin.
 
-Jquery Accordion uses CSS transitions to animate opening/closing with a fallback to jQuery's animate when CSS transitions are not supported. It takes little configuration or code to use it on your project. [Try out the demo](//vctrfrnndz.github.io/jquery-accordion).
+Jquery lightBox accepts CSS transitions classes to animate opening/closing. It takes little configuration or code to use it on your project. [Try out the demo](//vctrfrnndz.github.io/jquery-accordion).
 
-Supports IE9+ and modern browsers.
+Supports IE7+ and modern browsers.
 
 Developed by [@vctrfrnndz](//vctrfrnndz.com). Licensed under the MIT License.
 
 **Usage**
 
 ```javascript
-$('.accordion').accordion({
-    "transitionSpeed": 400
+$('#trigger').lightBox({
+    "ltBox":$('#container')
 });
 ```
 
 **Options**
 
-Name             | Default                    | Type    | Description
-:----------------|:---------------------------|:--------|:-----------
-transitionSpeed  | `300`                      | int     | Transition speed on miliseconds.                         
-transitionEasing | `'ease'`                   | string  | CSS value for easing.                                    
+Name             | Default                     | Type    | Description
+:----------------|:--------------------------- |:--------|:-----------
+ltBox            | `null`                      | Element | HTML element to be shown in lightBox.                   
+dimens           | `{height:auto,width:'auto'}`| string  | CSS value for easing.                                    
 controlElement   | `'[data-control]'`         | string  | CSS selector for the element acting as a button.
 contentElement   | `'[data-content]'`         | string  | CSS selector for the element containing hide/show content. 
 groupElement     | `'[data-accordion-group]'` | string  | CSS selector for a parent element containing a group.
