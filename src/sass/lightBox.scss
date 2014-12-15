@@ -1,0 +1,60 @@
+
+
+%border-box{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+
+$duration : 0.3s; 
+.ltCont,.ltLayer{
+	position:absolute; 
+	top:0; 
+	right:0; 
+	left:0; 
+	bottom:0; 
+	@extend %border-box;	
+}
+
+.lightbox{
+	display:none;
+}
+.ltCont{ 
+	&.close{display:none;}	
+	.lightbox_open{
+		display:block;
+	}	
+}
+.ltLayer{
+	background:#000;
+	-webkit-transition: opacity $duration;
+	transition: opacity $duration;
+	
+	&.open{
+		opacity:0.5;
+		filter:alpha(opacity=50);
+	}
+	&.close{
+		opacity:0;
+		filter:alpha(opacity=0);
+	}
+}
+.flipOpen,.flipClose{
+
+	-webkit-transform-origin:50% 0 0;
+    transform-origin: 50% 0 0; 
+	
+	-webkit-transition: -webkit-transform $duration,opacity $duration;
+	transition: transform $duration,opacity $duration;
+}
+
+.flipOpen { 
+	-webkit-transform: perspective(1300px) rotateX(0deg); opacity: 1;
+	transform: perspective(1300px) rotateX(0deg); opacity: 1;
+}
+
+.flipClose { 
+	-webkit-transform: perspective(1300px) rotateX(-60deg);opacity: 0;
+	transform: perspective(1300px) rotateX(-60deg);opacity: 0;
+}
