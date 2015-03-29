@@ -1,0 +1,49 @@
+
+.ltCont {
+    overflow: hidden;
+}
+
+.ltCont,
+.ltLayer {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ltCont,
+.ltCont .ltLayer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.ltCont.close {
+    display: none;
+}
+
+.ltCont .ltLayer {
+    background: #000;
+    -moz-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.ltCont .ltLayer.open {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.ltCont .ltLayer.close {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.lightbox,
+.drawer {
+    visibility: hidden;
+    z-index: -1;
+}
+
+.ltCont .model_open {
+    visibility: visible
+}

@@ -1,39 +1,49 @@
 // JavaScript Document
-$('#trigger1').lightBox({"ltBox":$('#container1')});
+$('#trigger1').lightBox({"model":$('#container1')});
 
 $('#trigger2').lightBox({
-	"ltBox":$('#container2'),
+	"model":$('#container2'),
 	"dimens":{"width":"50%"}
 });
 
 $('#trigger3').lightBox({
-	"ltBox":$('#container3'),
+	"model":$('#container3'),
 	"dimens":{"width":"50%"},
 	"resetForm":true
 });
 
 $('#trigger4').lightBox({
-	"ltBox":$('#container4'),
+	"model":$('#container4'),
 	"dimens":{"width":"50%"},
 	"resetForm":true,
 	"fixed": true
 });
 
 $('#trigger5').lightBox({
-	"ltBox":$('#container5'),
+	"model":$('#container5'),
 	"dimens":{"width":"50%"},
 	"resetForm":true,
 	"fixed": true,
-	"open":{"anim":{"className":"flipOpen"}},
-	"close":{"anim":{"className":'flipClose',"duration":300}}
+	"open":{"anim" :"flipOpen"},
+	"close":{"anim" :"flipClose"}
 });  
 
 $('#trigger6').lightBox({
-	"ltBox":$('#container6'),
+	"model":$('#container6'),
 	"dimens":{"width":"50%"},
 	"resetForm":true,
 	"fixed": true,
-	"open":{"anim":{"className":"flipOpen"}},
+	"open":{"anim":"flipOpen"},
 	"close":{"nodes":$("#container6 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
-	"anim":{"className":'flipClose',"duration":300}}	
+	"anim":"flipClose"}	
 });  
+
+$('#trigger7').lightBox({
+    "model":$('#container7'),
+    "dimens":{"width":"50%"},
+    "resetForm":true,
+    "fixed": true,
+    "open":{"anim":"flipOpen","selector":"input"},
+    "close":{"nodes":$("#container7 .close"),
+    "anim":"flipClose"}  
+}); 

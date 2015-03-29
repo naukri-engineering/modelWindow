@@ -25,7 +25,7 @@ body{
         <h3>Minimum configration</h3>
 		<input id="trigger1" value="Trigger 1" type="button">
         <div id="container1" class="lightbox">
-           <div class="code">$('#trigger1').lightBox({"ltBox":$('#container1')});</div>
+           <div class="code">$('#trigger1').lightBox({"model":$('#container1')});</div>
         </div>
     </div>
     
@@ -35,7 +35,7 @@ body{
         <div id="container2" class="lightbox">
 			<div class="code">		
                 $('#trigger2').lightBox({
-                    "ltBox":$('#container2'),
+                    "model":$('#container2'),
                     "dimens":{"width":"50%"}
                 });        
             </div>
@@ -53,7 +53,7 @@ body{
             </form>
             <div class="code">		
                 $('#trigger3').lightBox({
-                    "ltBox":$('#container3'),
+                    "model":$('#container3'),
                     "dimens":{"width":"50%"},
                     "resetForm":true
                 });  
@@ -72,7 +72,7 @@ body{
             </form>
             <div class="code">		
                 $('#trigger4').lightBox({
-                    "ltBox":$('#container4'),
+                    "model":$('#container4'),
                     "dimens":{"width":"50%"},
                     "resetForm":true,
                     "fixed": true
@@ -92,12 +92,12 @@ body{
             </form>
             <div class="code">		
                 $('#trigger5').lightBox({
-                    "ltBox":$('#container5'),
+                    "model":$('#container5'),
                     "dimens":{"width":"50%"},
                     "resetForm":true,
                     "fixed": true,
-                    "open":{"anim":{"className":"flipOpen"}},
-                    "close":{"anim":{"className":'flipClose',"duration":300}}
+                    "open":{"anim":"flipOpen"},
+                    "close":{"anim":"flipClose"}
                 });            
              </div>      
         </div>
@@ -115,14 +115,42 @@ body{
             </form>
             <div class="code">		
                 $('#trigger6').lightBox({
-                    "ltBox":$('#container6'),
+                    "model":$('#container6'),
                     "dimens":{"width":"50%"},
                     "resetForm":true,
                     "fixed": true,
-                    "open":{"anim":{"className":"flipOpen"}},
+                    "open":{"anim":"flipOpen"},
                     "close":{"nodes":$("#container6 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
-                    "anim":{"className":'flipClose',"duration":300}}	
+                    "anim":"flipClose"}	
                 });             
+             </div>      
+        </div>
+    </div>
+
+    <div>
+        <h3>Delegation support for set of targets</h3>
+        <div id="trigger7">
+            <input value="Trigger 7.1" type="button">
+            <input value="Trigger 7.2" type="button">
+            <input value="Trigger 7.3" type="button">
+        </div>
+        <div id="container7" class="lightbox">
+            <form>
+                You are
+                <input type="radio" name="radio"> Male
+                <input type="radio" name="radio"> Female
+                <input type="button" value="Close" class="close">
+            </form>
+            <div class="code">      
+                $('#trigger7').lightBox({
+                    "model":$('#container7'),
+                    "dimens":{"width":"50%"},
+                    "resetForm":true,
+                    "fixed": true,
+                    "open":{"anim":"flipOpen","selector":"input"},
+                    "close":{"nodes":$("#container7 .close"),
+                    "anim":"flipClose"}  
+                })            
              </div>      
         </div>
     </div>
@@ -140,6 +168,7 @@ body{
     
 </body>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="j/modelWindow.js"></script>
 <script src="j/lightBox.js"></script>
 <script src="j/demo.js"></script>
 </html>
