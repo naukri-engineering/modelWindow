@@ -90,7 +90,7 @@
 				mask = {
 					resize:function(){obj.resize();},
 					open: function(){obj.open();},
-					close: function(){obj.close();}
+					close: function(index,noAnim){obj.close(index,noAnim);}
 				};
 									
 				_this.data('model', mask);

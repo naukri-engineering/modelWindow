@@ -17,6 +17,10 @@ var model = (function(){
 		  }
 		}	
 	}());
+
+	if(DEBUG){
+		window.isTransitionEndSupported = isTransitionEndSupported;
+	}
 	
 	/** Refered : JQuery UI Code */
 	/** Detects focusable element */
@@ -59,14 +63,14 @@ var model = (function(){
 				}
 			return true;
 		},
-		/** Deprecated will be remove */
-		/*is_animtion_support : function(){			
-			return window.navigator.userAgent.match(/MSIE (7|8|9)/)=== null;	
-		},*/
 		switchClass:function(a,b){
 			this.removeClass(a).addClass(b);
 		}
-	};	
+	};
+
+	if(DEBUG){
+		window.util = util;
+	}	
 
 
 	var default_opt = {
@@ -130,6 +134,10 @@ var model = (function(){
             layer: layer
         };
     }());
+
+    if(DEBUG){
+    	window.stack = lt.stack;
+    }
 	
 	//Document Ready
 	$(function () {
@@ -206,7 +214,6 @@ var model = (function(){
 			util.switchClass.apply(this.options.model,arr);
 		},
 		close : function(obj){
-
 			var arr = [this.options.open.anim,this.options.close.anim];
 			util.switchClass.apply(this.options.model,arr);
 		}	
@@ -245,6 +252,7 @@ var model = (function(){
 			
 			this.options.model.css('zIndex','-1');		
 			
+			
 			if(lt.stack.length){				
 				var top = lt.stack[0];	
 				lt.layer.css('zIndex',top.options.model.css('zIndex'));		
@@ -266,8 +274,8 @@ var model = (function(){
 
 		/**Adding events Closing nodes */
 		init_closeNodes.call(this,this.options.close.nodes)
-
-		this.options.model.on('transitionend webkitTransitionEnd',function(){
+					
+		this.options.model.on(isTransitionEndSupported,function(){				
 			if(_this.state == 'close'){
 				closeTransEnd_cb.call(_this);
 			}
@@ -374,10 +382,10 @@ var model = (function(){
 		lt.stack.splice(index,1);
 		
 		if(!isTransitionEndSupported  || noAnim || !this.options.open.anim){			
-
 			closeTransEnd_cb.call(this);						
 			
-		}else{
+		}else{			
+
 			animate.close.call(this);	
 		}
 			
@@ -397,7 +405,7 @@ var model = (function(){
 
 				/** Cleaning registered events for same trigger-lightBox*/
 				var obj = trigger.data('model');
-				if(obj && obj.options.model[0]===options.model[0]){
+				if(obj && obj.options && obj.options.model[0]===options.model[0]){
 						reInit.call(this);
 				}
 				options.trigger = trigger;
