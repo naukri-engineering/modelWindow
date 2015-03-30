@@ -32,7 +32,7 @@ close            | `{...}`                       | Object   | Closing properties
                  | nodes     : `{"target":"","event":"click","selector":""}`| Object  | Define nodes to close lightBox.
                  |  success  : `function(){}`    | Function  | Close success callback.
                  |  returnFocus : `true`         | Boolean  | Return focus to trigger element on close.
-                 |  anim     : `""`              | String  | CSS animation class added on lightbox at close. Duration in ms required by plugin.
+                 |  anim     : `""`              | String  | CSS animation class added on lightbox at close.
                  
                   
 **Methods**
