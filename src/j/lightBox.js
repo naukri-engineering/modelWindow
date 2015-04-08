@@ -69,14 +69,14 @@
 			if(options.open){
 				try{
 					temp = options.open.anim; 
-					if(!(options.open.anim = options.open.anim.className))throw temp;
+					if(temp && !(options.open.anim = options.open.anim.className))throw temp;
 				}catch(e){options.open.anim=e}
 			}
 			
 			if(options.close){
 				try{
 					temp = options.close.anim; 
-					if(!(options.close.anim = options.close.anim.className))throw temp;
+					if(temp && !(options.close.anim = options.close.anim.className))throw temp;
 				}catch(e){options.close.anim=e;}
 			}
 
