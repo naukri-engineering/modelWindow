@@ -1,11 +1,20 @@
-jQuery LightBox
+jQuery modelWindow (previously called lightBox)
 ================
 
-Customizable, CSS powered, jQuery lightBox plugin.
+Customizable, CSS powered, jQuery modelWindow plugin.
 
-Jquery lightBox accepts CSS transitions classes to animate opening/closing. It takes little configuration or code to use it on your project. [Try out the demo](https://jsfiddle.net/ankit90_anand/75jx05xq/embedded/result/).
+It accepts CSS transitions classes to animate opening/closing. It takes little configuration or code to use it on your project. 
 
-Supports IE7+ and modern browsers.
+**Support**  
+
+modelWindow is available in jQUery and Zepto variants.  
+jQuery supports IE7+ and modern browsers.  
+Zepto supports  IE10+ and modern mobile browsers.  
+
+**Derived plugin**  
+
+LightBox [Try out the demo](https://jsfiddle.net/ankit90_anand/75jx05xq/embedded/result/).  
+Drawer  [Try out the demo](http://jsfiddle.net/ankit90_anand/jqkj0L8g/embedded/result/).
 
 **Usage**
 
@@ -13,7 +22,7 @@ Supports IE7+ and modern browsers.
 $('.trigger').lightBox({"model":$('#container')});
 ```
 
-**Options**
+**Model Options**
 
 Name             | Default                       | Type              | Description
 :----------------|:----------------------------- |:----------------- |:-----------
@@ -21,6 +30,7 @@ model            | `null`                        | Element | Node to be opened a
 dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox                  
 resetForm        | `false`                       | Boolean | Reset FORM inside lightBox at open & close
 fixed            | `false`                       | Boolean | Position lightbox as absolute or fixed.
+zLayer           | `true`                        | Boolean | Change zIndex of black layer on opening new modelWindow
 open             | `{...}`                       | Object  | Opening properties 
                  |  success  : `function(){}`    | Function | Open success callback
                  |  event    : `"click"`         | String   | Open trigger event.
@@ -33,13 +43,26 @@ close            | `{...}`                       | Object   | Closing properties
                  |  success  : `function(){}`    | Function  | Close success callback.
                  |  returnFocus : `true`         | Boolean  | Return focus to trigger element on close.
                  |  anim     : `""`              | String  | CSS animation class added on lightbox at close.
-                 
+
+**Drawer Options**
+
+Name             | Default                       | Type              | Description
+:----------------|:----------------------------- |:----------------- |:-----------
+dir              | `right`                       | String  | Direction of opening of drawer               
+zLayer           | `false`                       | Boolean | Set to false for mobile optimization
+open             | `{...}`                       | Object  | Opening properties 
+                 |  anim     : `"sideIn"`        | String  | Default CSS animation sideIn.
+
                   
 **Methods**
 
 `$('#trigger').lightBox().open()` Open lightBox
 
 `$('#trigger').lightBox().close()` Close lightBox
+
+`$('#trigger').lightBox().on() Enable lightBox`
+
+`$('#trigger').lightBox().off() Disable lightBox`
 
 `$.fn.lightBox.close()` Close topmost lightBox.
 
