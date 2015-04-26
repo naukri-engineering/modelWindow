@@ -58,7 +58,7 @@ var model = (function(){
 	/** Some common Utility functions*/
 	var util = {
 		is_options_valid : function(options){
-				if(!options || !options.model || (options.model.prop('nodeType') !== 1)){
+				if(!options || !options.model || (options.model[0]['nodeType'] !== 1)){
 					return false;
 				}
 			return true;
@@ -141,9 +141,9 @@ var model = (function(){
     }
 	
 	//Document Ready
-	$(function () {
+	//$(document).ready(function () {
 		$('body').append(lt.cont);
-	});
+	//});
 
     /*var manage_focus = (function () {      
 		
@@ -251,12 +251,14 @@ var model = (function(){
 
 			this.options.model.removeClass('model_open');
 			
-			this.options.model.css('zIndex','-1');		
+			//this.options.model.css('zIndex','-1');		
 			
 			
 			if(lt.stack.length){				
 				var top = lt.stack[0];	
-				lt.layer.css('zIndex',top.options.model.css('zIndex'));		
+				if(this.options.zLayer){
+					lt.layer.css('zIndex',top.options.model.css('zIndex'));			
+				}				
 			}else{
 				lt.cont.addClass('close')
 			}
@@ -272,7 +274,7 @@ var model = (function(){
 		 var _this = this;		
 		/** Adding event on trigger */
 		
-		this.openEventHandler = function(){_this.open();}
+		this.openEventHandler = function(e){_this.open();}
 		
 		this.options.trigger.on(this.options.open.event+'.'+this.pluginName,this.openEventHandler)
 
@@ -349,28 +351,30 @@ var model = (function(){
 	var open = function(){
 		
 		this.state = 'open'
-		
-		if(!lt.stack.length){
-			lt.cont.removeClass('close')
-			this.util.switchClass.call(lt.layer,'close','open')
-		}
-		
-		resetForm.call(this);
+		this.options.model.addClass('model_open');
 		
 		/** Setting zIndex of lightBox and black layer */
-		var maxZIndElm = getMaxZIndex()
+		var maxZIndElm = getMaxZIndex();
 		if(this.options.zLayer){
 			lt.layer.css('zIndex',  maxZIndElm + 3);
+		}		
+		if(this.pluginName != 'drawer'){
+			this.options.model.css('zIndex', maxZIndElm + 3);			
 		}
-		lt.cont.css('zIndex', maxZIndElm + 1);
-		this.options.model.css('zIndex', maxZIndElm + 3);		
-							
+
+		if(!lt.stack.length){
+			lt.cont.css('zIndex', maxZIndElm + 1);
+			this.util.switchClass.call(lt.layer,'close','open')
+			lt.cont.removeClass('close')
+			
+		}		
+		
+		resetForm.call(this);
+
 		/** Stack Update */
 		if($.inArray(this,lt.stack)===-1){
 			lt.stack.unshift(this);		
-		}
-		
-		this.options.model.addClass('model_open');
+		}		
 		
 		/** Center align LightBox */
 		this.resize();	
@@ -382,7 +386,6 @@ var model = (function(){
 						
 		/** Success callback */
 		(this.options.open.success)();		
-
 	}
 	
 	var close = function(index,noAnim){
@@ -447,7 +450,8 @@ var model = (function(){
 		off:off,
 		resize:resize,
 		default_opt:default_opt,
-		init_structure:init_structure
+		init_structure:init_structure,
+
 	}	
 }());
 
