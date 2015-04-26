@@ -14,7 +14,7 @@ Zepto supports  IE10+ and modern mobile browsers.
 **Derived plugin**  
 
 LightBox [Try out the demo](https://jsfiddle.net/ankit90_anand/75jx05xq/embedded/result/).  
-Drawer  [Try out the demo](https://jsfiddle.net/ankit90_anand/jqkj0L8g/embedded/result/).
+Drawer  [Try out the demo](http://jsfiddle.net/ankit90_anand/jqkj0L8g/embedded/result/).
 
 **Usage**
 
