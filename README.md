@@ -3,7 +3,7 @@ jQuery modelWindow (previously called lightBox)
 
 Customizable, CSS powered, jQuery modelWindow plugin.
 
-It accepts CSS transitions classes to animate opening/closing. It takes little configuration or code to use it on your project. [Try out the demo](https://jsfiddle.net/ankit90_anand/75jx05xq/embedded/result/).
+It accepts CSS transitions classes to animate opening/closing. It takes little configuration or code to use it on your project. 
 
 **Support**  
 
@@ -13,8 +13,8 @@ Zepto supports  IE10+ and modern mobile browsers.
 
 **Derived plugin**  
 
-LightBox  
-Drawer  
+LightBox [Try out the demo](https://jsfiddle.net/ankit90_anand/75jx05xq/embedded/result/).  
+Drawer  [Try out the demo](https://jsfiddle.net/ankit90_anand/jqkj0L8g/embedded/result/).
 
 **Usage**
 
