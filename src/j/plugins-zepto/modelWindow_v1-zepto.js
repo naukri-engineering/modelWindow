@@ -22,9 +22,9 @@ var model = (function(){
 		window.isTransitionEndSupported = isTransitionEndSupported;
 	}
 	
-	/** Refered : JQuery UI Code */
-	/** Detects focusable element */
-	function focusable(element, isTabIndexNotNaN) {
+	//Refered : JQuery UI Code
+	//Detects focusable element
+	/*function focusable(element, isTabIndexNotNaN) {
 		var map, mapName, img,
 			nodeName = element.nodeName.toLowerCase();
 		if ("area" === nodeName) {
@@ -52,8 +52,8 @@ var model = (function(){
 	
 	$.expr[":"].focusable = function (element) {
 		return focusable(element, !isNaN($.attr(element, "tabindex")));
-	};	
-	/** Refered : JQuery UI Code */
+	};*/	
+	//Refered : JQuery UI Code
 	
 	/** Some common Utility functions*/
 	var util = {
@@ -145,9 +145,9 @@ var model = (function(){
 		$('body').append(lt.cont);
 	});
 
-    var manage_focus = (function () {      
+    /*var manage_focus = (function () {      
 		
-        /** If tab is pressend on or in lightbox */
+        // If tab is pressend on or in lightbox
         lt.cont.keydown(function (event) {
             if (!lt.stack.length || event.keyCode !== 9){
                 return;
@@ -166,16 +166,16 @@ var model = (function(){
             event.stopPropagation();
         });
 
-        /** If tab is pressed on first or last focusable element and lightbox is open */
+        // If tab is pressed on first or last focusable element and lightbox is open
         $('html').keydown(function (event) {
             if (event.keyCode !== 9){ return;}
-            /** If lightbox is open */
+            // If lightbox is open
             if (lt.stack.length) {
                 lt.cont.focus();
                 return false;
             }
         });
-    }());
+    }());*/
 	
 	//for findOut max ZIndex on page
 	// * is replaced with .ltLayer as multiple ltCont are created when lightBox.js is included more than once. 
@@ -289,13 +289,13 @@ var model = (function(){
 	var init_closeNodes = function(nodes){
 		var _this = this;		
 		
-		if($.type(nodes) === 'array'){//Recursive
+		/*if($.type(nodes) === 'array'){//Recursive
 			$.each(nodes,function(a,b){init_closeNodes.call(_this,b)})		
 			return;
-		}
+		}*/
 		
 		var config = null;		
-		if(nodes.constructor === jQuery){
+		if($.type(nodes) === 'array'){
 			config = $.extend({},this.default_opt.close.nodes);
 			config.target = nodes;
 		}
