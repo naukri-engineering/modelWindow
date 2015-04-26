@@ -6,6 +6,7 @@
 .ltLayer {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    /*z-index:1;*/
 }
 
 .ltCont,
@@ -37,8 +38,7 @@
     filter: alpha(opacity=0);
 }
 
-.lightbox,
-.drawer {
+.lightbox {
     visibility: hidden;
     z-index: -1;
 }

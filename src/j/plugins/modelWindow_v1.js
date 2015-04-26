@@ -349,28 +349,30 @@ var model = (function(){
 	var open = function(){
 		
 		this.state = 'open'
-		
-		if(!lt.stack.length){
-			lt.cont.removeClass('close')
-			this.util.switchClass.call(lt.layer,'close','open')
-		}
-		
-		resetForm.call(this);
+		this.options.model.addClass('model_open');
 		
 		/** Setting zIndex of lightBox and black layer */
-		var maxZIndElm = getMaxZIndex()
+		var maxZIndElm = getMaxZIndex();
 		if(this.options.zLayer){
 			lt.layer.css('zIndex',  maxZIndElm + 3);
+		}		
+		if(this.pluginName != 'drawer'){
+			this.options.model.css('zIndex', maxZIndElm + 3);			
 		}
-		lt.cont.css('zIndex', maxZIndElm + 1);
-		this.options.model.css('zIndex', maxZIndElm + 3);		
-							
+
+		if(!lt.stack.length){
+			lt.cont.css('zIndex', maxZIndElm + 1);
+			this.util.switchClass.call(lt.layer,'close','open')
+			lt.cont.removeClass('close')
+			
+		}		
+		
+		resetForm.call(this);
+
 		/** Stack Update */
 		if($.inArray(this,lt.stack)===-1){
 			lt.stack.unshift(this);		
-		}
-		
-		this.options.model.addClass('model_open');
+		}		
 		
 		/** Center align LightBox */
 		this.resize();	
@@ -382,7 +384,6 @@ var model = (function(){
 						
 		/** Success callback */
 		(this.options.open.success)();		
-
 	}
 	
 	var close = function(index,noAnim){
