@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <link href="../../gen/c/drawer.min.css" rel="stylesheet">
+    <style>
+    body {
+        height: 1000px;
+    }
+    
+    .drawer {
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    .code {
+        background: #c2c2c2;
+        padding: 15px 25px;
+        ;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h3>Minimum configration</h3>
+        <input id="trigger1" value="Trigger 1" type="text">
+        <div id="container1" class="drawer">
+            <div class="code">$('#trigger1').drawer({"model":$('#container1')});</div>
+        </div>
+    </div>
+</body>
+<script src="../j/zepto.min.js"></script>
+<script src="../../gen/j/plugins-zepto/modelWindow_v1-zepto.min.js"></script>
+<script src="../../gen/j/plugins-zepto/drawer-zepto.min.js"></script>
+<script src="drawer-zepto.js"></script>
+
+
+</html>

@@ -1,0 +1,31 @@
+@import "model";
+.drawer{	
+	position:absolute;
+	top:0;
+	bottom:0;			
+
+	
+	-webkit-transition: left 500ms,right 500ms;
+	transition: left 500ms, right 500ms;
+	
+	/*opacity:0;*/
+	
+	width:80%;	
+		
+	&.left{
+		left:-80%;
+	}
+	&.right{
+		right:-80%;
+	}
+	&.open{
+		opacity:1;
+		&.right{
+			right : 0;
+		}
+		&.left{
+			left : 0;	
+		}
+	}
+}
+
