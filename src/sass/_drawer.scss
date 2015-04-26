@@ -4,8 +4,11 @@
 	bottom:0;			
 
 	
-	-webkit-transition: left 500ms,right 500ms;
-	transition: left 500ms, right 500ms;
+	/*-webkit-transition: left 500ms,right 500ms;
+	transition: left 500ms, right 500ms;*/
+	
+	-webkit-transition : -webkit-transform 500ms;
+	transition : transform 500ms;
 	
 	/*opacity:0;*/
 	
@@ -15,13 +18,17 @@
 		left:-80%;
 	}
 	&.right{
-		right:-80%;
+		-webkit-transform: translate(calc(100%),0px);		    
+		transform: translate(calc(100%),0px);		    
+		right : 0;
 	}
 	&.sideIn{
 		/*opacity:1;*/
 
 		&.right{
-			right : 0;
+			-webkit-transform: translate(0px,0px);	
+		    transform: translate(0px,0px);		   
+			
 		}
 		&.left{
 			left : 0;	
