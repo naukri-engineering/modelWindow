@@ -1,4 +1,7 @@
 .drawer{	
+	
+	visibility : hidden;	
+
 	position:absolute;
 	top:0;
 	bottom:0;			
@@ -18,11 +21,51 @@
 		left:-80%;
 	}
 	&.right{
-		-webkit-transform: translate(calc(100%),0px);		    
-		transform: translate(calc(100%),0px);		    
+
+		/* #### Mobile Phones Portrait #### */
+		@media screen and (max-device-width: 480px) and (orientation: portrait){
+		  /* some CSS here */
+		  -webkit-transform: translate(384px,0px);		    
+		   transform: translate(384px,0px);		    
+		   -webkit-transform: translate(calc(100%),0px);		    
+			transform: translate(calc(100%),0px);
+		}
+
+		/* #### Mobile Phones Portrait or Landscape #### */
+		@media screen and (min-device-width: 481px) and (max-device-width: 640px){
+		  /* some CSS here */
+		    -webkit-transform: translate(512px,0px);		    
+		   transform: translate(512px,0px);		    
+		}
+
+		/* #### iPhone 4+ Portrait or Landscape #### */
+		@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+		  /* some CSS here */
+		  -webkit-transform: translate(384px,0px);		    
+		   transform: translate(384px,0px);
+		   -webkit-transform: translate(calc(100%),0px);		    
+			transform: translate(calc(100%),0px);
+		}
+
+		/* #### Tablets Portrait or Landscape #### */
+		@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+		  /* some CSS here */	
+		  -webkit-transform: translate(820px,0px);		    
+		   transform: translate(820px,0px);
+		  -webkit-transform: translate(calc(100%),0px);		    
+			transform: translate(calc(100%),0px);
+		}
+
+		/* #### Desktops #### */
+		@media screen and (min-width: 1024px){
+		  /* some CSS here */
+		}
+		
+		
+
 		right : 0;
 	}
-	&.sideIn{
+		&.sideIn{
 		/*opacity:1;*/
 
 		&.right{
@@ -35,4 +78,5 @@
 		}
 	}
 }
+
 

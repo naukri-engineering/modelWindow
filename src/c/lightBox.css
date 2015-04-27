@@ -17,8 +17,8 @@
 
 .ltCont .model_open { visibility: visible; }
 
-.flipOpen, .flipClose { transform-origin: 50% 0 0; transition: transform 0.3s, opacity 0.3s; }
+.flipOpen, .flipClose { -webkit-transform-origin: 50% 0 0; -moz-transform-origin: 50% 0 0; -ms-transform-origin: 50% 0 0; transform-origin: 50% 0 0; -moz-transition: -moz-transform 0.3s, opacity 0.3s; transition: -webkit-transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; }
 
-.flipOpen { transform: perspective(1300px) rotateX(0deg); opacity: 1; }
+.flipOpen { -webkit-transform: perspective(1300px) rotateX(0deg); -moz-transform: perspective(1300px) rotateX(0deg); transform: perspective(1300px) rotateX(0deg); opacity: 1; }
 
-.flipClose { transform: perspective(1300px) rotateX(-60deg); opacity: 0; }
+.flipClose { -webkit-transform: perspective(1300px) rotateX(-60deg); -moz-transform: perspective(1300px) rotateX(-60deg); transform: perspective(1300px) rotateX(-60deg); opacity: 0; }
