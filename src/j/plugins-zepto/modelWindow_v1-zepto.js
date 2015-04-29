@@ -122,7 +122,9 @@ var model = (function(){
 		});
 		
 		//Close lightBox on layer click
-		layer.click(function(){
+		layer.click(function(e){
+			$n.stopPropagation(e);
+			lt.stack[0].close_target = this;
 			if(lt.stack.length && lt.stack[0].options.close.layer){
 				lt.stack[0].close();					
 			}	
@@ -267,7 +269,7 @@ var model = (function(){
 			
 			resetForm.call(this);
 			
-			(this.options.close.success)();
+			(this.options.close.success)(this.close_target);
 	}
 	
 	var init_openclose_Properties = function(){
@@ -290,7 +292,7 @@ var model = (function(){
 	
 	var init_closeNodes = function(nodes){
 		var _this = this;		
-		
+		this.close_target = null;	
 		/*if($.type(nodes) === 'array'){//Recursive
 			$.each(nodes,function(a,b){init_closeNodes.call(_this,b)})		
 			return;
