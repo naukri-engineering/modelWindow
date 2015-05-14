@@ -123,7 +123,7 @@ var model = (function(){
 		
 		//Close lightBox on layer click
 		layer.click(function(e){
-			$n.stopPropagation(e);
+			e.stopPropagation();
 			lt.stack[0].close_target = this;
 			if(lt.stack.length && lt.stack[0].options.close.layer){
 				lt.stack[0].close();					

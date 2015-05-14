@@ -288,12 +288,12 @@ var model = (function(){
 	
 	var init_closeNodes = function(nodes){
 		var _this = this;		
-		console.log($.type(nodes))
+		
 		if($.type(nodes) === 'array'){//Recursive
 			$.each(nodes,function(a,b){init_closeNodes.call(_this,b)})		
 			return;
 		}
-		console.log(nodes,nodes.constructor)
+		
 		var config = null;		
 		if(nodes.constructor === jQuery){
 			config = $.extend({},this.default_opt.close.nodes);
