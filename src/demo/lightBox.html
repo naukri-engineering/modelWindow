@@ -154,6 +154,32 @@ body{
              </div>      
         </div>
     </div>
+
+
+    <div>
+        <h3>Define minimum z-index of lightBox</h3>
+        <input id="trigger8" value="Trigger 8" type="button">
+        <div id="container8" class="lightbox">
+            <form>
+                You are
+                <input type="radio" name="radio"> Male
+                <input type="radio" name="radio"> Female
+                <input type="button" value="Close" class="close">
+            </form>
+            <div class="code">      
+                $('#trigger6').lightBox({
+                    "model":$('#container8'),
+                    "dimens":{"width":"50%"},
+                    "resetForm":true,
+                    "fixed": true,
+                    "open":{"anim":"flipOpen","minZIndex":2000},
+                    "close":{"nodes":$("#container8 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
+                    "anim":"flipClose"} 
+                });             
+             </div>      
+        </div>
+    </div>
+
     
      <div>     
         <h3>Available Methods</h3>
@@ -169,9 +195,9 @@ body{
     
     
 </body>
-
+<script>var DEBUG = true;</script>
 <script src="../j/jquery-1.11.0.min.js"></script>
-<script src="../../gen/j/plugins/modelWindow_v1.min.js"></script>
-<script src="../../gen/j/plugins/lightBox_v1.min.js"></script>
+<script src="../../src/j/plugins/modelWindow_v2.js"></script>
+<script src="../../src/j/plugins/lightBox_model_v1.js"></script>
 <script src="lightBox.js"></script>
 </html>
