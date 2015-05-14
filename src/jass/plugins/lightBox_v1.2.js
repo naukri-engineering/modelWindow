@@ -96,7 +96,6 @@ if (!$.fn.lightBox) {
                 resetForm: false,
                 fixed: false,
                 open: {
-                    minZIndex : 999,
                     success: function() {},
                     event: 'click',
                     anim: {
@@ -239,7 +238,7 @@ if (!$.fn.lightBox) {
             //for findOut max ZIndex on page
             // * is replaced with .ltLayer as multiple ltCont are created when lightBox.js is included more than once. 
             function getMaxZIndex() {
-                var zIndexMax = this.options.open.minZIndex;
+                var zIndexMax = 999;
                 $('.ltCont .ltLayer').each(function() {
                     var z = parseInt($(this).css('z-index'));
                     if (z > zIndexMax) zIndexMax = z;
@@ -500,4 +499,3 @@ if (!$.fn.lightBox) {
 
 
 /*v1.2:  add $.fn.lightbox already exist check*/
-/*v1.3:  open{minZIndex:999}*/
