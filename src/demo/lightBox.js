@@ -47,3 +47,13 @@ $('#trigger7').lightBox({
     "close":{"nodes":$("#container7 .close"),
     "anim":"flipClose"}  
 }); 
+
+$('#trigger8').lightBox({
+	"model":$('#container8'),
+	"dimens":{"width":"50%"},
+	"resetForm":true,
+	"fixed": true,
+	"open":{"anim":"flipOpen","minZIndex":2000},
+	"close":{"nodes":$("#container8 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
+	"anim":"flipClose"}	
+}); 
