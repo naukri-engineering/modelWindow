@@ -336,7 +336,7 @@ if (!$.fn.lightBox) {
 
                 resetForm.call(this);
                 /** Setting zIndex of lightBox and black layer */
-                var maxZIndElm = getMaxZIndex()
+                var maxZIndElm = getMaxZIndex.call(this)
                 lt.layer.css({
                     'zIndex': maxZIndElm + 3,
                     'width': $(document).outerWidth() + "px",
