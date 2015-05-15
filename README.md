@@ -28,22 +28,24 @@ Name             | Default                       | Type              | Descripti
 :----------------|:----------------------------- |:----------------- |:-----------
 model            | `null`                        | Element | Node to be opened as lightBox               
 dimens           | `{"height":"auto","width":"auto"}`| Object  | Dimensions of lightBox                  
-resetForm        | `false`                       | Boolean | Reset FORM inside lightBox at open & close
-fixed            | `false`                       | Boolean | Position lightbox as absolute or fixed.
-zLayer           | `true`                        | Boolean | Change zIndex of black layer on opening new modelWindow
-open             | `{...}`                       | Object  | Opening properties 
-                 |  minZIndex: `999`             | Number  | Define minimum starting z-index for lightBox
-                 |  success  : `function(){/** this is lightbox instance */}`    | Function | Open success callback
-                 |  event    : `"click"`         | String   | Open trigger event.
-                 |  selector : `""`              | String   | Selector for target delegation.
-                 |  anim     : `""`              | String   | CSS animation class added on lightbox at open.
-close            | `{...}`                       | Object   | Closing properties                 
-                 |  esc      : `true`            | Boolean  | Close lightBox on escape key press.
-                 | layer     : `true`            | Boolean  | Close lightBox on background layer click.
-                 | nodes     : `{"target":"","event":"click","selector":""}`| Object  | Define nodes to close lightBox.
-                 |  success  : `function(target){/** this is lightbox instance,target: node which fired close */}`    | Function  | Close success callback.
-                 |  returnFocus : `true`         | Boolean  | Return focus to trigger element on close.
-                 |  anim     : `""`              | String  | CSS animation class added on lightbox at close.
+resetForm        | `false`                           | Boolean | Reset FORM inside lightBox at open & close
+fixed            | `false`                           | Boolean | Position lightbox as absolute or fixed.
+zLayer           | `true`                            | Boolean | Change zIndex of black layer on opening new modelWindow
+open             | `{...}`                           | Object  | Opening properties 
+                 |  minZIndex: `999`                 | Number  | Define minimum starting z-index for lightBox
+                 |  success  : `function(){}`        | Function | Open success callback
+                 |                                   |          | this is lightbox instance
+                 |  event    : `"click"`             | String   | Open trigger event.
+                 |  selector : `""`                  | String   | Selector for target delegation.
+                 |  anim     : `""`                  | String   | CSS animation class added on lightbox at open.
+close            | `{...}`                           | Object   | Closing properties                 
+                 |  esc      : `true`                | Boolean  | Close lightBox on escape key press.
+                 |  layer     : `true`               | Boolean  | Close lightBox on background layer click.
+                 |  success  : `function(target){}`  | Function  | Close success callback.
+                 |                                   |           | this : lightbox instance,    target: node which fired close
+                 |  returnFocus : `true`             | Boolean   | Return focus to trigger element on close.
+                 |  anim     : `""`                  | String    | CSS animation class added on lightbox at close.
+                 |  nodes     : `{"target":"","event":"click","selector":""}`| Object  | Define nodes to close lightBox.
 
 **Drawer Options**
 
