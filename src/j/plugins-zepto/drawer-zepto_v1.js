@@ -22,43 +22,43 @@ if (!model) {
             window.isTransitionEndSupported = isTransitionEndSupported;
         }
 
-        /** Refered : JQuery UI Code */
-        /** Detects focusable element */
-        function focusable(element, isTabIndexNotNaN) {
-            var map, mapName, img,
-                nodeName = element.nodeName.toLowerCase();
-            if ("area" === nodeName) {
-                map = element.parentNode;
-                mapName = map.name;
-                if (!element.href || !mapName || map.nodeName.toLowerCase() !== "map") {
-                    return false;
-                }
-                img = $("img[usemap=#" + mapName + "]")[0];
-                return !!img && visible(img);
+        //Refered : JQuery UI Code
+        //Detects focusable element
+        /*function focusable(element, isTabIndexNotNaN) {
+        var map, mapName, img,
+            nodeName = element.nodeName.toLowerCase();
+        if ("area" === nodeName) {
+            map = element.parentNode;
+            mapName = map.name;
+            if (!element.href || !mapName || map.nodeName.toLowerCase() !== "map") {
+                return false;
             }
-            return (/input|select|textarea|button|object/.test(nodeName) ? !element.disabled :
-                    "a" === nodeName ?
-                    element.href || isTabIndexNotNaN :
-                    isTabIndexNotNaN) &&
-                // the element and all of its ancestors must be visible
-                visible(element);
+            img = $("img[usemap=#" + mapName + "]")[0];
+            return !!img && visible(img);
         }
-
-        function visible(element) {
-            return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(function() {
-                return $.css(this, "visibility") === "hidden";
-            }).length;
-        }
-
-        $.expr[":"].focusable = function(element) {
-            return focusable(element, !isNaN($.attr(element, "tabindex")));
-        };
-        /** Refered : JQuery UI Code */
+        return (/input|select|textarea|button|object/.test(nodeName) ? !element.disabled :
+            "a" === nodeName ?
+            element.href || isTabIndexNotNaN :
+            isTabIndexNotNaN) &&
+        // the element and all of its ancestors must be visible
+        visible(element);
+    }
+    
+    function visible(element) {
+        return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(function () {
+            return $.css(this, "visibility") === "hidden";
+        }).length;
+    }
+    
+    $.expr[":"].focusable = function (element) {
+        return focusable(element, !isNaN($.attr(element, "tabindex")));
+    };*/
+        //Refered : JQuery UI Code
 
         /** Some common Utility functions*/
         var util = {
             is_options_valid: function(options) {
-                if (!options || !options.model || (options.model.prop('nodeType') !== 1)) {
+                if (!options || !options.model || (options.model[0]['nodeType'] !== 1)) {
                     return false;
                 }
                 return true;
@@ -88,7 +88,7 @@ if (!model) {
                 event: 'click',
                 selector: null,
                 anim: ''
-                    //			anim : {className:''}				
+                    //          anim : {className:''}               
             },
             close: {
                 esc: true,
@@ -101,7 +101,7 @@ if (!model) {
                 success: function() {},
                 returnFocus: true,
                 anim: ''
-                    //			anim : {className:'',duration:0}
+                    //          anim : {className:'',duration:0}
             }
         };
 
@@ -148,43 +148,41 @@ if (!model) {
         }
 
         //Document Ready
-        $(function() {
-            $('body').append(lt.cont);
+        //$(document).ready(function () {
+        $('body').append(lt.cont);
+        //});
+
+        /*var manage_focus = (function () {      
+        
+        // If tab is pressend on or in lightbox
+        lt.cont.keydown(function (event) {
+            if (!lt.stack.length || event.keyCode !== 9){
+                return;
+            }
+            var list = lt.stack[0].options.model.find(':focusable');
+            var first = list.first();
+            var last = list.last();
+
+            if ((event.target === last[0] || event.target === event.currentTarget) && !event.shiftKey) {
+                first ? first.focus() : '';         
+                return false;
+            } else if ((event.target === first[0] || event.target === event.currentTarget) && event.shiftKey) {
+                last ? last.focus() : '';
+                return false;
+            }
+            event.stopPropagation();
         });
 
-        var manage_focus = (function() {
-
-            /** If tab is pressend on or in lightbox */
-            lt.cont.keydown(function(event) {
-                if (!lt.stack.length || event.keyCode !== 9) {
-                    return;
-                }
-                var list = lt.stack[0].options.model.find(':focusable');
-                var first = list.first();
-                var last = list.last();
-
-                if ((event.target === last[0] || event.target === event.currentTarget) && !event.shiftKey) {
-                    first ? first.focus() : '';
-                    return false;
-                } else if ((event.target === first[0] || event.target === event.currentTarget) && event.shiftKey) {
-                    last ? last.focus() : '';
-                    return false;
-                }
-                event.stopPropagation();
-            });
-
-            /** If tab is pressed on first or last focusable element and lightbox is open */
-            $('html').keydown(function(event) {
-                if (event.keyCode !== 9) {
-                    return;
-                }
-                /** If lightbox is open */
-                if (lt.stack.length) {
-                    lt.cont.focus();
-                    return false;
-                }
-            });
-        }());
+        // If tab is pressed on first or last focusable element and lightbox is open
+        $('html').keydown(function (event) {
+            if (event.keyCode !== 9){ return;}
+            // If lightbox is open
+            if (lt.stack.length) {
+                lt.cont.focus();
+                return false;
+            }
+        });
+    }());*/
 
         //for findOut max ZIndex on page
         // * is replaced with .ltLayer as multiple ltCont are created when lightBox.js is included more than once. 
@@ -260,7 +258,7 @@ if (!model) {
 
             this.options.model.removeClass('model_open');
 
-            this.options.model.css('zIndex', '-1');
+            //this.options.model.css('zIndex', '-1');
 
 
             if (lt.stack.length) {
@@ -276,7 +274,7 @@ if (!model) {
 
             resetForm.call(this);
 
-            (this.options.close.success).call(this,this.close_target);
+            (this.options.close.success).call(this, this.close_target);
         }
 
         var init_openclose_Properties = function() {
@@ -301,16 +299,14 @@ if (!model) {
 
         var init_closeNodes = function(nodes) {
             var _this = this;
-
-            if ($.type(nodes) === 'array') { //Recursive
-                $.each(nodes, function(a, b) {
-                    init_closeNodes.call(_this, b)
-                })
-                return;
-            }
+            this.close_target = null;
+            /*if($.type(nodes) === 'array'){//Recursive
+            $.each(nodes,function(a,b){init_closeNodes.call(_this,b)})      
+            return;
+        }*/
 
             var config = null;
-            if (nodes.constructor === jQuery) {
+            if ($.type(nodes) === 'array') {
                 config = $.extend({}, this.default_opt.close.nodes);
                 config.target = nodes;
             } else {
@@ -367,7 +363,7 @@ if (!model) {
         var open = function() {
 
             this.state = 'open'
-            this.options.model.addClass('model_open');
+
 
             /** Setting zIndex of lightBox and black layer */
             var maxZIndElm = getMaxZIndex.call(this);
@@ -394,7 +390,7 @@ if (!model) {
 
             /** Center align LightBox */
             this.resize();
-
+            this.options.model.addClass('model_open');
             /** Animation Code */
             animate.open.call(this);
             /** Focus Element */
@@ -453,6 +449,7 @@ if (!model) {
 
 
         return {
+            isTransitionEndSupported: isTransitionEndSupported,
             pluginName: '',
             state: 'close',
             util: util,
@@ -472,139 +469,119 @@ if (!model) {
 
 }
 
-/* jslint curly : false	 */
-/* jslint asi : true	 */
+/* jslint curly : false  */
+/* jslint asi : true     */
 /*global pageXOffset */
 /*global pageYOffset */
+/*Start of Drawer Model*/
+(function($) {
 
-/*Start of lightBox*/
-(function($){
-  
-	/** Singleton Pattern */
-	/** If options are given each time a new object will be returned otherwise last configure object will be returend  */
-	
-	var pluginName = 'lightBox';
-	var lightBox = model.getNewModel(pluginName);
+    /** Singleton Pattern */
+    /** If options are given each time a new object will be returned otherwise last configure object will be returend  */
 
-	lightBox.prototype.resize = function () {
-		
-		model.resize();			
-	
-		var _doc = document.documentElement || document.body,
-			innerH = $(window).height(),
-			innerW = $(window).width(),
+    var pluginName = 'drawer';
+    var default_opt = {
+        "dir": "right",
+        "open": {
+            "anim": "sideIn"
+        },
+        "zLayer": false,
+        "close": {
+            "anim": " "
+        } /*Empty class required*/
+    };
+    var drawer = model.getNewModel(pluginName);
 
-			scrollT = window.pageYOffset ? pageYOffset : _doc.scrollTop,
-			scrollL = window.pageXOffset ? pageXOffset : _doc.scrollLeft			
-		var availH = innerH - this.options.model.height(),
-			tpPos = 0;
-		var availW = innerW - this.options.model.width(),
-			lpPos = 0;
-		if (availH > 0) {			
-			tpPos = (!this.options.fixed?scrollT:0) + (availH / 2);
-		} else {			
-			/*scrollT = totalH > innerH ? scrollT - 20 : scrollT;
-			tpPos = scrollT + availH;*/
-			tpPos = 0;
-			window.scrollTo(0, tpPos);
-		}
-		lpPos = availW > 0 ? availW / 2 : 0
 
-		this.options.model.css({
-			top: tpPos + 'px',
-			left: lpPos + 'px'		            
-		});
-		return true;		
-	}		
-		
-	
-		
-	
-	$.fn.lightBox = function (options) {
-		var obj = null, 
-			mask = null;
 
-		/** Support for legacy option : ltBox*/
-		var temp;		
-		if(options){
-			try{
-				temp = options.model; 
-				options.model = options.ltBox;
-				options.ltBox = null;
-				if(!options.model)throw temp;
-			}catch(e){options.model = e}
-		}
-		
-				
-			
-		if (model.util.is_options_valid(options)) {
 
-			/** Support for legacy option : anim*/
-			if(options.open){
-				try{
-					temp = options.open.anim; 
-					if(temp && !(options.open.anim = options.open.anim.className))throw temp;
-				}catch(e){options.open.anim=e}
-			}
-			
-			if(options.close){
-				try{
-					temp = options.close.anim; 
-					if(temp && !(options.close.anim = options.close.anim.className))throw temp;
-				}catch(e){options.close.anim=e;}
-			}
+    drawer.prototype.default_opt = $.extend(true, {}, model.default_opt, default_opt);
 
-			
-			$.each(this,function(a,b){
-				
-				var _this = $(b);
-				
-				obj = new lightBox(options,_this);
-				
-				mask = {
-					resize:function(){obj.resize();},
-					open: function(){obj.open();},
-					close: function(index,noAnim){obj.close(index,noAnim);},
-					on:function(){obj.on()},
-					off:function(){obj.off()}
-				};
-									
-				_this.data('model', mask);
-			});
-		}	
-		return this.data('model') || obj;
-	};
-	
-	
+    drawer.prototype.init_structure = function() {
 
-	$.fn.lightBox.close = function(option){
-		
-		var start,end;
-	
-		start = 0;
-		end = 0;		
-		option = option || {};
-		
-		if(option.all){
-			start = (model.lt.stack.length-1);			
-		}
-		if(option.allPrevious){
-			start = (model.lt.stack.length-1);			
-			end = 1;
-		}
-		else if(option.index)
-		{
-			end = start = option.index;
-		}
-		
-		for(var i=start;i>=end;i--){
-			(i in model.lt.stack)?model.lt.stack[i].close(i,option.noAnim):'';
-		}	
-	};
-	
-	$.fn.lightBox.closeAll = function(option){
-		$.fn.lightBox.close(option||{all:true});
-	};
+        model.init_structure.call(this);
+        this.options.model.addClass(this.options.dir);
+    }
 
-}(jQuery));
-/*End of lightBox*/
+    var minHeight = parseInt($('body').css('minHeight'));
+
+    drawer.prototype.resize = function() {
+        model.lt.cont.css({
+            width: 'auto',
+            height: 'auto'
+        })
+
+        var totalH = minHeight || $(window).height();
+            totalW = $(window).width();
+
+        model.lt.cont.css({
+            width: totalW,
+            height: totalH
+        });
+    }
+
+    /** Wrapped to handle drawer open and close */
+
+    
+    
+    var drawer_open = function() {
+        var height = minHeight || $(window).height();        
+        model.open.call(this);
+        $('html,body').css({
+            'minHeight': height,
+            'height': height,
+            'overflow': 'hidden'
+        });
+    }
+    var drawer_close = function() {
+        model.close.call(this);
+        var height = minHeight || $(window).height();
+        $('html,body').css({
+            'minHeight': height,
+            'height': height,
+            'overflow': 'visible'
+        });
+    }
+
+    $.fn.drawer = function(options) {
+        var obj = null,
+            mask = null;
+
+
+
+
+        if (model.util.is_options_valid(options)) {
+
+            $.each(this, function(a, b) {
+
+                var _this = $(b);
+
+                obj = new drawer(options, _this);
+
+                obj.open = function() {
+                    drawer_open.call(obj);
+                }
+                obj.close = function() {
+                    drawer_close.call(obj);
+                }
+
+                mask = {
+                    open: obj.open,
+                    close: obj.close,
+                    on: function() {
+                        obj.on();
+                    },
+                    off: function() {
+                        obj.off();
+                    }
+                };
+
+                _this[0].model = mask;
+            });
+        }
+        return this[0].model || obj;
+    };
+
+
+}(Zepto));
+/*End of Drawer Model*/
