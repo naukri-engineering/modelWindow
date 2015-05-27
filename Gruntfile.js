@@ -28,9 +28,9 @@ module.exports = function(grunt) {
 			drawerZepto:{
 			  src: [
 			  	'src/jass/plugins-zepto/modelWindow_v1-zepto.js',
-			  	'src/jass/plugins-zepto/drawer-zepto.js'			  	  
+			  	'src/jass/plugins-zepto/drawer-zepto_v1.js'			  	  
 			  ],
-			  dest: 'src/j/plugins-zepto/drawer-zepto.js',
+			  dest: 'src/j/plugins-zepto/drawer-zepto_v1.js',
 			  nonull:true	
 			}
 		}
