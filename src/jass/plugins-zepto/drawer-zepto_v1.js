@@ -10,6 +10,7 @@
 
     var pluginName = 'drawer';
     var default_opt = {
+        "contentWrapper": $('body'),
         "dir": "right",
         "open": {
             "anim": "sideIn"
@@ -32,52 +33,49 @@
         this.options.model.addClass(this.options.dir);
     }
 
-    var minHeight = parseInt($('body').css('minHeight'));
+
 
     drawer.prototype.resize = function() {
+        var minHeight = parseInt($('body').css('minHeight'));
+
         model.lt.cont.css({
             width: 'auto',
             height: 'auto'
         })
 
-        var totalH = minHeight || $(window).height();
-        totalW = $(window).width();
+        var totalH = minHeight || $(window).height(),
+            totalW = $(document).width();
+
+        this.options.contentWrapper.css({
+            width: totalW + 'px',
+            height: totalH + 'px'
+        });
+
 
         model.lt.cont.css({
-            width: totalW,
-            height: totalH
+            width: totalW + 'px',
+            height: totalH + 'px'
         });
+
     }
 
     /** Wrapped to handle drawer open and close */
 
 
-
     var drawer_open = function() {
-        var height = minHeight || $(window).height();
         model.open.call(this);
-        $('html,body').css({
-            'minHeight': height,
-            'height': height,
-            'overflow': 'hidden'
-        });
+
+
+
     }
     var drawer_close = function() {
         model.close.call(this);
-        var height = minHeight || $(window).height();
-        $('html,body').css({
-            'minHeight': height,
-            'height': height,
-            'overflow': 'visible'
-        });
+
     }
 
     $.fn.drawer = function(options) {
         var obj = null,
             mask = null;
-
-
-
 
         if (model.util.is_options_valid(options)) {
 

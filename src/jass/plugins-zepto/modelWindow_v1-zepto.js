@@ -112,7 +112,8 @@ if (!model) {
             cont.append(layer);
 
             //Reset lightBox on resize
-            $(window).bind('resize', function() {
+            $(window).on('resize', function() {
+                
                 if (lt.stack.length) {
                     var top = lt.stack[0];
                     top.resize();
@@ -362,17 +363,17 @@ if (!model) {
 
         var open = function() {
 
-            this.state = 'open'
-
+            this.state = 'open';            
+            this.options.model.addClass('model_open');
 
             /** Setting zIndex of lightBox and black layer */
             var maxZIndElm = getMaxZIndex.call(this);
             if (this.options.zLayer) {
                 lt.layer.css('zIndex', maxZIndElm + 3);
             }
-            if (this.pluginName != 'drawer') {
+            //if (this.pluginName != 'drawer') {
                 this.options.model.css('zIndex', maxZIndElm + 3);
-            }
+            //}
 
             if (!lt.stack.length) {
                 lt.cont.css('zIndex', maxZIndElm + 1);
@@ -388,11 +389,12 @@ if (!model) {
                 lt.stack.unshift(this);
             }
 
-            /** Center align LightBox */
+             /** Center align LightBox */    
             this.resize();
-            this.options.model.addClass('model_open');
-            /** Animation Code */
-            animate.open.call(this);
+           
+             /** Animation Code */
+            animate.open.call(this);    
+            
             /** Focus Element */
             open_firstFocus.call(this);
 

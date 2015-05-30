@@ -16,14 +16,15 @@
 
 .ltCont .model_open { visibility: visible; }
 
+.ltCont { position: fixed !important; }
+
 .drawer { visibility: hidden; position: absolute; top: 0; bottom: 0; -webkit-transition: -webkit-transform 500ms; transition: transform 500ms; /*opacity:0;*/ width: 80%; }
-.drawer.left { left: -80%; }
-.drawer.right { /* #### Mobile Phones Portrait #### */ /* #### Mobile Phones Portrait or Landscape #### */ /* #### iPhone 4+ Portrait or Landscape #### */ /* #### Tablets Portrait or Landscape #### */ /* #### Desktops #### */ right: 0; }
-@media screen and (min-device-width: 321px) and (max-device-width: 480px) and (orientation: portrait) { .drawer.right { /* some CSS here */ -webkit-transform: translate(384px, 0px); transform: translate(384px, 0px); -webkit-transform: translate(calc(100%), 0px); transform: translate(calc(100%), 0px); } }
+.drawer.left { left: 0; -webkit-transform: translate(calc(-100%), 0px); transform: translate(calc(-100%), 0px); }
+.drawer.right { right: 0; /* #### Mobile Phones Portrait #### */ /* #### Mobile Phones Portrait or Landscape #### */ /* #### iPhone 4+ Portrait or Landscape #### */ /* #### Tablets Portrait or Landscape #### */ -webkit-transform: translate(calc(100%), 0px); transform: translate(calc(100%), 0px); }
+@media screen and (min-device-width: 321px) and (max-device-width: 480px) and (orientation: portrait) { .drawer.right { /* some CSS here */ -webkit-transform: translate(384px, 0px); transform: translate(384px, 0px); } }
 @media screen and (min-device-width: 481px) and (max-device-width: 640px) { .drawer.right { /* some CSS here */ -webkit-transform: translate(512px, 0px); transform: translate(512px, 0px); } }
-@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { .drawer.right { /* some CSS here */ -webkit-transform: translate(384px, 0px); transform: translate(384px, 0px); -webkit-transform: translate(calc(100%), 0px); transform: translate(calc(100%), 0px); } }
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) { .drawer.right { /* some CSS here */ -webkit-transform: translate(820px, 0px); transform: translate(820px, 0px); -webkit-transform: translate(calc(100%), 0px); transform: translate(calc(100%), 0px); } }
-@media screen and (min-width: 1024px) { .drawer.right { /* some CSS here */ } }
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) { .drawer.right { /* some CSS here */ -webkit-transform: translate(384px, 0px); transform: translate(384px, 0px); } }
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) { .drawer.right { /* some CSS here */ -webkit-transform: translate(820px, 0px); transform: translate(820px, 0px); } }
 .drawer.sideIn { /*opacity:1;*/ }
 .drawer.sideIn.right { -webkit-transform: translate(0px, 0px); transform: translate(0px, 0px); }
-.drawer.sideIn.left { left: 0; }
+.drawer.sideIn.left { -webkit-transform: translate(0px, 0px); transform: translate(0px, 0px); }
