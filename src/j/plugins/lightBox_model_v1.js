@@ -88,7 +88,7 @@ if (!model) {
                 event: 'click',
                 selector: null,
                 anim: ''
-                    //			anim : {className:''}				
+                    //          anim : {className:''}               
             },
             close: {
                 esc: true,
@@ -101,7 +101,7 @@ if (!model) {
                 success: function() {},
                 returnFocus: true,
                 anim: ''
-                    //			anim : {className:'',duration:0}
+                    //          anim : {className:'',duration:0}
             }
         };
 
@@ -276,12 +276,13 @@ if (!model) {
 
             resetForm.call(this);
 
-            (this.options.close.success).call(this,this.close_target);
+            (this.options.close.success).call(this, this.close_target);
         }
 
         var init_openclose_Properties = function() {
             var _this = this;
-            /** Adding event on trigger */
+            _this.state = "close"
+                /** Adding event on trigger */
 
             this.openEventHandler = function() {
                 _this.open();
@@ -292,11 +293,7 @@ if (!model) {
             /**Adding events Closing nodes */
             init_closeNodes.call(this, this.options.close.nodes)
 
-            this.options.model.on(isTransitionEndSupported, function() {
-                if (_this.state == 'close') {
-                    closeTransEnd_cb.call(_this);
-                }
-            });
+
         }
 
         var init_closeNodes = function(nodes) {
@@ -368,6 +365,7 @@ if (!model) {
 
             this.state = 'open'
             this.options.model.addClass('model_open');
+            this.options.model.data('model',this);
 
             /** Setting zIndex of lightBox and black layer */
             var maxZIndElm = getMaxZIndex.call(this);
@@ -410,7 +408,8 @@ if (!model) {
             if (!lt.stack.length || index < 0)
                 return;
 
-            this.state = 'close';
+            this.state = 'close';            
+            this.options.model.data('model',this);
 
             lt.stack.splice(index, 1);
 
@@ -454,7 +453,6 @@ if (!model) {
 
         return {
             pluginName: '',
-            state: 'close',
             util: util,
             lt: lt,
             reInit: reInit,
@@ -466,7 +464,8 @@ if (!model) {
             off: off,
             resize: resize,
             default_opt: default_opt,
-            init_structure: init_structure
+            init_structure: init_structure,
+            closeTransEnd_cb: closeTransEnd_cb
         }
     }());
 
@@ -478,133 +477,157 @@ if (!model) {
 /*global pageYOffset */
 
 /*Start of lightBox*/
-(function($){
-  
-	/** Singleton Pattern */
-	/** If options are given each time a new object will be returned otherwise last configure object will be returend  */
-	
-	var pluginName = 'lightBox';
-	var lightBox = model.getNewModel(pluginName);
+(function($) {
 
-	lightBox.prototype.resize = function () {
-		
-		model.resize();			
-	
-		var _doc = document.documentElement || document.body,
-			innerH = $(window).height(),
-			innerW = $(window).width(),
+    /** Singleton Pattern */
+    /** If options are given each time a new object will be returned otherwise last configure object will be returend  */
 
-			scrollT = window.pageYOffset ? pageYOffset : _doc.scrollTop,
-			scrollL = window.pageXOffset ? pageXOffset : _doc.scrollLeft			
-		var availH = innerH - this.options.model.height(),
-			tpPos = 0;
-		var availW = innerW - this.options.model.width(),
-			lpPos = 0;
-		if (availH > 0) {			
-			tpPos = (!this.options.fixed?scrollT:0) + (availH / 2);
-		} else {			
-			/*scrollT = totalH > innerH ? scrollT - 20 : scrollT;
+    var pluginName = 'lightBox';
+    var lightBox = model.getNewModel(pluginName);
+
+    lightBox.prototype.resize = function() {
+
+        model.resize();
+
+        var _doc = document.documentElement || document.body,
+            innerH = $(window).height(),
+            innerW = $(window).width(),
+
+            scrollT = window.pageYOffset ? pageYOffset : _doc.scrollTop,
+            scrollL = window.pageXOffset ? pageXOffset : _doc.scrollLeft
+        var availH = innerH - this.options.model.height(),
+            tpPos = 0;
+        var availW = innerW - this.options.model.width(),
+            lpPos = 0;
+        if (availH > 0) {
+            tpPos = (!this.options.fixed ? scrollT : 0) + (availH / 2);
+        } else {
+            /*scrollT = totalH > innerH ? scrollT - 20 : scrollT;
 			tpPos = scrollT + availH;*/
-			tpPos = 0;
-			window.scrollTo(0, tpPos);
-		}
-		lpPos = availW > 0 ? availW / 2 : 0
+            tpPos = 0;
+            window.scrollTo(0, tpPos);
+        }
+        lpPos = availW > 0 ? availW / 2 : 0
 
-		this.options.model.css({
-			top: tpPos + 'px',
-			left: lpPos + 'px'		            
-		});
-		return true;		
-	}		
-		
-	
-		
-	
-	$.fn.lightBox = function (options) {
-		var obj = null, 
-			mask = null;
+        this.options.model.css({
+            top: tpPos + 'px',
+            left: lpPos + 'px'
+        });
+        return true;
+    }
 
-		/** Support for legacy option : ltBox*/
-		var temp;		
-		if(options){
-			try{
-				temp = options.model; 
-				options.model = options.ltBox;
-				options.ltBox = null;
-				if(!options.model)throw temp;
-			}catch(e){options.model = e}
-		}
-		
-				
-			
-		if (model.util.is_options_valid(options)) {
 
-			/** Support for legacy option : anim*/
-			if(options.open){
-				try{
-					temp = options.open.anim; 
-					if(temp && !(options.open.anim = options.open.anim.className))throw temp;
-				}catch(e){options.open.anim=e}
-			}
-			
-			if(options.close){
-				try{
-					temp = options.close.anim; 
-					if(temp && !(options.close.anim = options.close.anim.className))throw temp;
-				}catch(e){options.close.anim=e;}
-			}
 
-			
-			$.each(this,function(a,b){
-				
-				var _this = $(b);
-				
-				obj = new lightBox(options,_this);
-				
-				mask = {
-					resize:function(){obj.resize();},
-					open: function(){obj.open();},
-					close: function(index,noAnim){obj.close(index,noAnim);},
-					on:function(){obj.on()},
-					off:function(){obj.off()}
-				};
-									
-				_this.data('model', mask);
-			});
-		}	
-		return this.data('model') || obj;
-	};
-	
-	
 
-	$.fn.lightBox.close = function(option){
-		
-		var start,end;
-	
-		start = 0;
-		end = 0;		
-		option = option || {};
-		
-		if(option.all){
-			start = (model.lt.stack.length-1);			
-		}
-		if(option.allPrevious){
-			start = (model.lt.stack.length-1);			
-			end = 1;
-		}
-		else if(option.index)
-		{
-			end = start = option.index;
-		}
-		
-		for(var i=start;i>=end;i--){
-			(i in model.lt.stack)?model.lt.stack[i].close(i,option.noAnim):'';
-		}	
-	};
-	
-	$.fn.lightBox.closeAll = function(option){
-		$.fn.lightBox.close(option||{all:true});
-	};
+    $.fn.lightBox = function(options) {
+        var obj = null,
+            mask = null;
+
+        /** Support for legacy option : ltBox*/
+        var temp;
+        if (options) {
+            try {
+                temp = options.model;
+                options.model = options.ltBox;
+                options.ltBox = null;
+                if (!options.model) throw temp;
+            } catch (e) {
+                options.model = e
+            }
+        }
+
+
+
+        if (model.util.is_options_valid(options)) {
+
+            /** Support for legacy option : anim*/
+            if (options.open) {
+                try {
+                    temp = options.open.anim;
+                    if (temp && !(options.open.anim = options.open.anim.className)) throw temp;
+                } catch (e) {
+                    options.open.anim = e
+                }
+            }
+
+            if (options.close) {
+                try {
+                    temp = options.close.anim;
+                    if (temp && !(options.close.anim = options.close.anim.className)) throw temp;
+                } catch (e) {
+                    options.close.anim = e;
+                }
+            }
+
+
+            $.each(this, function(a, b) {
+
+                var _this = $(b);
+
+                obj = new lightBox(options, _this);
+
+                mask = {
+                    resize: function() {
+                        obj.resize();
+                    },
+                    open: function() {
+                        obj.open();
+                    },
+                    close: function(index, noAnim) {
+                        obj.close(index, noAnim);
+                    },
+                    on: function() {
+                        obj.on()
+                    },
+                    off: function() {
+                        obj.off()
+                    }
+                };
+
+                _this.data('model', mask);
+            });
+
+            options.model.on(isTransitionEndSupported, function() {
+                if (options.model.hasClass(obj.options.close.anim)) {
+                    model.closeTransEnd_cb.call(options.model.data('model'));
+                }
+            });
+
+
+        }
+        return this.data('model') || obj;
+    };
+
+
+
+    $.fn.lightBox.close = function(option) {
+
+        var start, end;
+
+        start = 0;
+        end = 0;
+        option = option || {};
+
+        if (option.all) {
+            start = (model.lt.stack.length - 1);
+        }
+        if (option.allPrevious) {
+            start = (model.lt.stack.length - 1);
+            end = 1;
+        } else if (option.index) {
+            end = start = option.index;
+        }
+
+        for (var i = start; i >= end; i--) {
+            (i in model.lt.stack) ? model.lt.stack[i].close(i, option.noAnim): '';
+        }
+    };
+
+    $.fn.lightBox.closeAll = function(option) {
+        $.fn.lightBox.close(option || {
+            all: true
+        });
+    };
 
 }(jQuery));
 /*End of lightBox*/
