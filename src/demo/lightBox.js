@@ -1,5 +1,5 @@
 // JavaScript Document
-$('#trigger1').lightBox({"model":$('#container1')});
+/*$('.group').lightBox({"model":$('#container1')});
 
 $('#trigger2').lightBox({
 	"model":$('#container2'),
@@ -18,8 +18,8 @@ $('#trigger4').lightBox({
 	"resetForm":true,
 	"fixed": true
 });
-
-$('#trigger5').lightBox({
+*/
+$('.trigger5').lightBox({
 	"model":$('#container5'),
 	"dimens":{"width":"50%"},
 	"resetForm":true,
@@ -28,7 +28,7 @@ $('#trigger5').lightBox({
 	"close":{"anim" :"flipClose"}
 });  
 
-$('#trigger6').lightBox({
+/*$('#trigger6').lightBox({
 	"model":$('#container6'),
 	"dimens":{"width":"50%"},
 	"resetForm":true,
@@ -56,4 +56,4 @@ $('#trigger8').lightBox({
 	"open":{"anim":"flipOpen","minZIndex":2000},
 	"close":{"nodes":$("#container8 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
 	"anim":"flipClose"}	
-}); 
+}); */

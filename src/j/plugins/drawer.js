@@ -88,7 +88,7 @@ if (!model) {
                 event: 'click',
                 selector: null,
                 anim: ''
-                    //			anim : {className:''}				
+                    //          anim : {className:''}               
             },
             close: {
                 esc: true,
@@ -101,7 +101,7 @@ if (!model) {
                 success: function() {},
                 returnFocus: true,
                 anim: ''
-                    //			anim : {className:'',duration:0}
+                    //          anim : {className:'',duration:0}
             }
         };
 
@@ -276,12 +276,13 @@ if (!model) {
 
             resetForm.call(this);
 
-            (this.options.close.success).call(this,this.close_target);
+            (this.options.close.success).call(this, this.close_target);
         }
 
         var init_openclose_Properties = function() {
             var _this = this;
-            /** Adding event on trigger */
+            _this.state = "close"
+                /** Adding event on trigger */
 
             this.openEventHandler = function() {
                 _this.open();
@@ -292,11 +293,7 @@ if (!model) {
             /**Adding events Closing nodes */
             init_closeNodes.call(this, this.options.close.nodes)
 
-            this.options.model.on(isTransitionEndSupported, function() {
-                if (_this.state == 'close') {
-                    closeTransEnd_cb.call(_this);
-                }
-            });
+
         }
 
         var init_closeNodes = function(nodes) {
@@ -368,6 +365,7 @@ if (!model) {
 
             this.state = 'open'
             this.options.model.addClass('model_open');
+            this.options.model.data('model',this);
 
             /** Setting zIndex of lightBox and black layer */
             var maxZIndElm = getMaxZIndex.call(this);
@@ -410,7 +408,8 @@ if (!model) {
             if (!lt.stack.length || index < 0)
                 return;
 
-            this.state = 'close';
+            this.state = 'close';            
+            this.options.model.data('model',this);
 
             lt.stack.splice(index, 1);
 
@@ -454,7 +453,6 @@ if (!model) {
 
         return {
             pluginName: '',
-            state: 'close',
             util: util,
             lt: lt,
             reInit: reInit,
@@ -466,7 +464,8 @@ if (!model) {
             off: off,
             resize: resize,
             default_opt: default_opt,
-            init_structure: init_structure
+            init_structure: init_structure,
+            closeTransEnd_cb: closeTransEnd_cb
         }
     }());
 
