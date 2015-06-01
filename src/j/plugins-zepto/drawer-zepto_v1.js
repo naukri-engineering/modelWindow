@@ -483,7 +483,6 @@ if (!model) {
 
     var pluginName = 'drawer';
     var default_opt = {
-        "contentWrapper": $('body'),
         "dir": "right",
         "open": {
             "anim": "sideIn"
@@ -519,11 +518,11 @@ if (!model) {
         var totalH = minHeight || $(window).height(),
             totalW = $(document).width();
 
-        this.options.contentWrapper.css({
+/*        this.options.contentWrapper.css({
             width: totalW + 'px',
             height: totalH + 'px'
         });
-
+*/
 
         model.lt.cont.css({
             width: totalW + 'px',
