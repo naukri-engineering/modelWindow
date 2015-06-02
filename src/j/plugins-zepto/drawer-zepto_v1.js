@@ -515,7 +515,7 @@ if (!model) {
             height: 'auto'
         })
 
-        var totalH = minHeight || $(window).height(),
+        var totalH = Math.max(minHeight,$(window).height()),
             totalW = $(document).width();
 
 /*        this.options.contentWrapper.css({
