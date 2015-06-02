@@ -288,7 +288,7 @@ if (!model) {
                 _this.open();
             }
 
-            
+            console.log(this.options.open)
             this.options.trigger.on(this.options.open.event + '.' + this.pluginName,this.options.open.selector, this.openEventHandler)
 
             /**Adding events Closing nodes */
@@ -364,7 +364,7 @@ if (!model) {
 
         var open = function() {
 
-            this.state = 'open';            
+            this.state = 'open'
             this.options.model.addClass('model_open');
             this.options.model.data('model',this);
 
@@ -453,9 +453,7 @@ if (!model) {
 
 
         return {
-            isTransitionEndSupported: isTransitionEndSupported,
             pluginName: '',
-            state: 'close',
             util: util,
             lt: lt,
             reInit: reInit,

@@ -22,43 +22,43 @@ if (!model) {
             window.isTransitionEndSupported = isTransitionEndSupported;
         }
 
-        /** Refered : JQuery UI Code */
-        /** Detects focusable element */
-        function focusable(element, isTabIndexNotNaN) {
-            var map, mapName, img,
-                nodeName = element.nodeName.toLowerCase();
-            if ("area" === nodeName) {
-                map = element.parentNode;
-                mapName = map.name;
-                if (!element.href || !mapName || map.nodeName.toLowerCase() !== "map") {
-                    return false;
-                }
-                img = $("img[usemap=#" + mapName + "]")[0];
-                return !!img && visible(img);
+        //Refered : JQuery UI Code
+        //Detects focusable element
+        /*function focusable(element, isTabIndexNotNaN) {
+        var map, mapName, img,
+            nodeName = element.nodeName.toLowerCase();
+        if ("area" === nodeName) {
+            map = element.parentNode;
+            mapName = map.name;
+            if (!element.href || !mapName || map.nodeName.toLowerCase() !== "map") {
+                return false;
             }
-            return (/input|select|textarea|button|object/.test(nodeName) ? !element.disabled :
-                    "a" === nodeName ?
-                    element.href || isTabIndexNotNaN :
-                    isTabIndexNotNaN) &&
-                // the element and all of its ancestors must be visible
-                visible(element);
+            img = $("img[usemap=#" + mapName + "]")[0];
+            return !!img && visible(img);
         }
-
-        function visible(element) {
-            return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(function() {
-                return $.css(this, "visibility") === "hidden";
-            }).length;
-        }
-
-        $.expr[":"].focusable = function(element) {
-            return focusable(element, !isNaN($.attr(element, "tabindex")));
-        };
-        /** Refered : JQuery UI Code */
+        return (/input|select|textarea|button|object/.test(nodeName) ? !element.disabled :
+            "a" === nodeName ?
+            element.href || isTabIndexNotNaN :
+            isTabIndexNotNaN) &&
+        // the element and all of its ancestors must be visible
+        visible(element);
+    }
+    
+    function visible(element) {
+        return $.expr.filters.visible(element) && !$(element).parents().addBack().filter(function () {
+            return $.css(this, "visibility") === "hidden";
+        }).length;
+    }
+    
+    $.expr[":"].focusable = function (element) {
+        return focusable(element, !isNaN($.attr(element, "tabindex")));
+    };*/
+        //Refered : JQuery UI Code
 
         /** Some common Utility functions*/
         var util = {
             is_options_valid: function(options) {
-                if (!options || !options.model || (options.model.prop('nodeType') !== 1)) {
+                if (!options || !options.model || (options.model[0]['nodeType'] !== 1)) {
                     return false;
                 }
                 return true;
@@ -112,7 +112,8 @@ if (!model) {
             cont.append(layer);
 
             //Reset lightBox on resize
-            $(window).bind('resize', function() {
+            $(window).on('resize', function() {
+                
                 if (lt.stack.length) {
                     var top = lt.stack[0];
                     top.resize();
@@ -148,43 +149,41 @@ if (!model) {
         }
 
         //Document Ready
-        $(function() {
-            $('body').append(lt.cont);
+        //$(document).ready(function () {
+        $('body').append(lt.cont);
+        //});
+
+        /*var manage_focus = (function () {      
+        
+        // If tab is pressend on or in lightbox
+        lt.cont.keydown(function (event) {
+            if (!lt.stack.length || event.keyCode !== 9){
+                return;
+            }
+            var list = lt.stack[0].options.model.find(':focusable');
+            var first = list.first();
+            var last = list.last();
+
+            if ((event.target === last[0] || event.target === event.currentTarget) && !event.shiftKey) {
+                first ? first.focus() : '';         
+                return false;
+            } else if ((event.target === first[0] || event.target === event.currentTarget) && event.shiftKey) {
+                last ? last.focus() : '';
+                return false;
+            }
+            event.stopPropagation();
         });
 
-        var manage_focus = (function() {
-
-            /** If tab is pressend on or in lightbox */
-            lt.cont.keydown(function(event) {
-                if (!lt.stack.length || event.keyCode !== 9) {
-                    return;
-                }
-                var list = lt.stack[0].options.model.find(':focusable');
-                var first = list.first();
-                var last = list.last();
-
-                if ((event.target === last[0] || event.target === event.currentTarget) && !event.shiftKey) {
-                    first ? first.focus() : '';
-                    return false;
-                } else if ((event.target === first[0] || event.target === event.currentTarget) && event.shiftKey) {
-                    last ? last.focus() : '';
-                    return false;
-                }
-                event.stopPropagation();
-            });
-
-            /** If tab is pressed on first or last focusable element and lightbox is open */
-            $('html').keydown(function(event) {
-                if (event.keyCode !== 9) {
-                    return;
-                }
-                /** If lightbox is open */
-                if (lt.stack.length) {
-                    lt.cont.focus();
-                    return false;
-                }
-            });
-        }());
+        // If tab is pressed on first or last focusable element and lightbox is open
+        $('html').keydown(function (event) {
+            if (event.keyCode !== 9){ return;}
+            // If lightbox is open
+            if (lt.stack.length) {
+                lt.cont.focus();
+                return false;
+            }
+        });
+    }());*/
 
         //for findOut max ZIndex on page
         // * is replaced with .ltLayer as multiple ltCont are created when lightBox.js is included more than once. 
@@ -260,7 +259,7 @@ if (!model) {
 
             this.options.model.removeClass('model_open');
 
-            this.options.model.css('zIndex', '-1');
+            //this.options.model.css('zIndex', '-1');
 
 
             if (lt.stack.length) {
@@ -281,34 +280,34 @@ if (!model) {
 
         var init_openclose_Properties = function() {
             var _this = this;
-            _this.state = "close"
-                /** Adding event on trigger */
+            /** Adding event on trigger */
 
             this.openEventHandler = function() {
                 _this.open();
             }
 
-            
-            this.options.trigger.on(this.options.open.event + '.' + this.pluginName,this.options.open.selector, this.openEventHandler)
+            this.options.trigger.on(this.options.open.event + '.' + this.pluginName, this.openEventHandler)
 
             /**Adding events Closing nodes */
             init_closeNodes.call(this, this.options.close.nodes)
 
-
+            this.options.model.on(isTransitionEndSupported, function() {
+                if (_this.state == 'close') {
+                    closeTransEnd_cb.call(_this);
+                }
+            });
         }
 
         var init_closeNodes = function(nodes) {
             var _this = this;
-
-            if ($.type(nodes) === 'array') { //Recursive
-                $.each(nodes, function(a, b) {
-                    init_closeNodes.call(_this, b)
-                })
-                return;
-            }
+            this.close_target = null;
+            /*if($.type(nodes) === 'array'){//Recursive
+            $.each(nodes,function(a,b){init_closeNodes.call(_this,b)})      
+            return;
+        }*/
 
             var config = null;
-            if (nodes.constructor === jQuery) {
+            if ($.type(nodes) === 'array') {
                 config = $.extend({}, this.default_opt.close.nodes);
                 config.target = nodes;
             } else {
@@ -366,16 +365,15 @@ if (!model) {
 
             this.state = 'open';            
             this.options.model.addClass('model_open');
-            this.options.model.data('model',this);
 
             /** Setting zIndex of lightBox and black layer */
             var maxZIndElm = getMaxZIndex.call(this);
             if (this.options.zLayer) {
                 lt.layer.css('zIndex', maxZIndElm + 3);
             }
-            if (this.pluginName != 'drawer') {
+            //if (this.pluginName != 'drawer') {
                 this.options.model.css('zIndex', maxZIndElm + 3);
-            }
+            //}
 
             if (!lt.stack.length) {
                 lt.cont.css('zIndex', maxZIndElm + 1);
@@ -391,11 +389,12 @@ if (!model) {
                 lt.stack.unshift(this);
             }
 
-            /** Center align LightBox */
+             /** Center align LightBox */    
             this.resize();
-
-            /** Animation Code */
-            animate.open.call(this);
+           
+             /** Animation Code */
+            animate.open.call(this);    
+            
             /** Focus Element */
             open_firstFocus.call(this);
 
@@ -409,8 +408,7 @@ if (!model) {
             if (!lt.stack.length || index < 0)
                 return;
 
-            this.state = 'close';            
-            this.options.model.data('model',this);
+            this.state = 'close';
 
             lt.stack.splice(index, 1);
 
@@ -467,8 +465,7 @@ if (!model) {
             off: off,
             resize: resize,
             default_opt: default_opt,
-            init_structure: init_structure,
-            closeTransEnd_cb: closeTransEnd_cb
+            init_structure: init_structure
         }
     }());
 

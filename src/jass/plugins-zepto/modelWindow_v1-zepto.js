@@ -280,22 +280,20 @@ if (!model) {
 
         var init_openclose_Properties = function() {
             var _this = this;
-            /** Adding event on trigger */
+            _this.state = "close"
+                /** Adding event on trigger */
 
             this.openEventHandler = function() {
                 _this.open();
             }
 
-            this.options.trigger.on(this.options.open.event + '.' + this.pluginName, this.openEventHandler)
+            
+            this.options.trigger.on(this.options.open.event + '.' + this.pluginName,this.options.open.selector, this.openEventHandler)
 
             /**Adding events Closing nodes */
             init_closeNodes.call(this, this.options.close.nodes)
 
-            this.options.model.on(isTransitionEndSupported, function() {
-                if (_this.state == 'close') {
-                    closeTransEnd_cb.call(_this);
-                }
-            });
+
         }
 
         var init_closeNodes = function(nodes) {
@@ -365,15 +363,16 @@ if (!model) {
 
             this.state = 'open';            
             this.options.model.addClass('model_open');
+            this.options.model[0]['model'] = this;
 
             /** Setting zIndex of lightBox and black layer */
             var maxZIndElm = getMaxZIndex.call(this);
             if (this.options.zLayer) {
                 lt.layer.css('zIndex', maxZIndElm + 3);
             }
-            //if (this.pluginName != 'drawer') {
+            if (this.pluginName != 'drawer') {
                 this.options.model.css('zIndex', maxZIndElm + 3);
-            //}
+            }
 
             if (!lt.stack.length) {
                 lt.cont.css('zIndex', maxZIndElm + 1);
@@ -389,12 +388,11 @@ if (!model) {
                 lt.stack.unshift(this);
             }
 
-             /** Center align LightBox */    
+            /** Center align LightBox */
             this.resize();
-           
-             /** Animation Code */
-            animate.open.call(this);    
-            
+
+            /** Animation Code */
+            animate.open.call(this);
             /** Focus Element */
             open_firstFocus.call(this);
 
@@ -408,7 +406,8 @@ if (!model) {
             if (!lt.stack.length || index < 0)
                 return;
 
-            this.state = 'close';
+            this.state = 'close';            
+            this.options.model[0]['model'] = this;
 
             lt.stack.splice(index, 1);
 
@@ -465,7 +464,8 @@ if (!model) {
             off: off,
             resize: resize,
             default_opt: default_opt,
-            init_structure: init_structure
+            init_structure: init_structure,
+            closeTransEnd_cb: closeTransEnd_cb
         }
     }());
 
