@@ -288,7 +288,8 @@ if (!model) {
                 _this.open();
             }
 
-            this.options.trigger.on(this.options.open.event + '.' + this.pluginName, this.openEventHandler)
+            console.log(this.options.open)
+            this.options.trigger.on(this.options.open.event + '.' + this.pluginName,this.options.open.selector, this.openEventHandler)
 
             /**Adding events Closing nodes */
             init_closeNodes.call(this, this.options.close.nodes)
