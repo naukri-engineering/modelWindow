@@ -1,5 +1,5 @@
 // JavaScript Document
-/*$('.group').lightBox({"model":$('#container1')});
+$('.group').lightBox({"model":$('#container1')});
 
 $('#trigger2').lightBox({
 	"model":$('#container2'),
@@ -36,7 +36,7 @@ $('#trigger6').lightBox({
 	"open":{"anim":"flipOpen"},
 	"close":{"nodes":$("#container6 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
 	"anim":"flipClose"}	
-}); */ 
+});  
 
 $('#trigger7').lightBox({
     "model":$('#container7'),
@@ -59,7 +59,7 @@ $('#TWO').lightBox({
 }); 
 
 
-/*$('#trigger8').lightBox({
+$('#trigger8').lightBox({
 	"model":$('#container8'),
 	"dimens":{"width":"50%"},
 	"resetForm":true,
@@ -67,4 +67,4 @@ $('#TWO').lightBox({
 	"open":{"anim":"flipOpen","minZIndex":2000},
 	"close":{"nodes":$("#container8 .close"),//{"target":$("#container6"),"selector":".close"} is also valid
 	"anim":"flipClose"}	
-}); */
+}); 

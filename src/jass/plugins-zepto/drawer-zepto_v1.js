@@ -104,6 +104,12 @@
 
                 _this[0].model = mask;
             });
+
+            options.model.on(isTransitionEndSupported, function() {
+                if (options.model.hasClass(obj.options.close.anim)) {
+                    model.closeTransEnd_cb.call(options.model[0]['model']);
+                }
+            });
         }
         return this[0].model || obj;
     };
