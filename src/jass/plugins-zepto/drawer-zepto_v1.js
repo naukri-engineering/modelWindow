@@ -105,9 +105,11 @@
                 _this[0].model = mask;
             });
 
-            options.model.on(isTransitionEndSupported, function() {
-                if (options.model.hasClass(obj.options.close.anim)) {
-                    model.closeTransEnd_cb.call(options.model[0]['model']);
+            var optionModel = options.model;
+
+            optionModel.on(isTransitionEndSupported, function() {
+                if (optionModel.hasClass(obj.options.close.anim)) {
+                    model.closeTransEnd_cb.call(optionModel[0]['model']);
                 }
             });
         }
