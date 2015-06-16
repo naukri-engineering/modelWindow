@@ -35,7 +35,7 @@
 
 
     drawer.prototype.resize = function() {
-        var minHeight = parseInt($('body').css('minHeight'));
+        var minHeight = parseInt($('body').css('minHeight')||0);
 
         model.lt.cont.css({
             width: 'auto',
@@ -107,7 +107,7 @@
 
             var optionModel = options.model;
 
-            optionModel.on(isTransitionEndSupported, function() {
+            optionModel.on(model.isTransitionEndSupported, function() {
                 if (optionModel.hasClass(obj.options.close.anim)) {
                     model.closeTransEnd_cb.call(optionModel[0]['model']);
                 }
