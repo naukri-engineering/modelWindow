@@ -18,7 +18,7 @@
 
 .ltCont { position: fixed !important; }
 
-.drawerDisableScroll { max-height: 100% !important; overflow: hidden !important; }
+.drawerDisableScroll { min-height: 100% !important; max-height: 100% !important; overflow: hidden !important; }
 
 .drawer { visibility: hidden; position: absolute; top: 0; bottom: 0; -webkit-transition: -webkit-transform 500ms; transition: transform 500ms; /*opacity:0;*/ width: 80%; }
 .drawer.left { left: 0; -webkit-transform: translate(calc(-100%), 0px); transform: translate(calc(-100%), 0px); }
@@ -31,4 +31,4 @@
 .drawer.sideIn.right { -webkit-transform: translate(0px, 0px); transform: translate(0px, 0px); }
 .drawer.sideIn.left { -webkit-transform: translate(0px, 0px); transform: translate(0px, 0px); }
 
-/** drawer_v1  drawerDisableScroll :  */
+/** drawer_v1  drawerDisableScroll : Disable body scrolling */
