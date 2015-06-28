@@ -16,7 +16,7 @@
         },
         "zLayer": false,
         "close": {
-            "anim": " "
+            "anim": ""
         } /*Empty class required*/
     };
     var drawer = model.getNewModel(pluginName);
@@ -42,7 +42,8 @@
             height: 'auto'
         })
 
-        var totalH = Math.max(minHeight,$(window).height()),
+        //var totalH = Math.max(minHeight,$(window).height()),
+        var totalH = $(window).height(),
             totalW = $(document).width();
 
 /*        this.options.contentWrapper.css({
@@ -68,7 +69,10 @@
     }
     var drawer_close = function() {
         model.close.call(this);
-        $('html,body').removeClass('drawerDisableScroll');
+        if(model.lt.stack.length == 0){
+            $('html,body').removeClass('drawerDisableScroll');    
+        }
+        
 
     }
 
@@ -123,4 +127,5 @@
 /**
  * drawer-zepto_v2.js
  *    drawerDisableScroll : Class toggled on opening and closing drawer
+ *    Removed code to set height of ltCont to maximum of body minHeight or window height
  */

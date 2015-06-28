@@ -4,6 +4,7 @@
 
 
 .drawerDisableScroll{
+    min-height : 100% !important;
     max-height: 100% !important;
     overflow: hidden !important;
 }
@@ -77,5 +78,5 @@
 
 /**
  * drawer_v1 
-    * drawerDisableScroll : 
+    * drawerDisableScroll : Disable body scrolling
  */
