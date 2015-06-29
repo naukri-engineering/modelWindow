@@ -16,7 +16,7 @@
         },
         "zLayer": false,
         "close": {
-            "anim": ""
+            "anim": "sideOut"
         } /*Empty class required*/
     };
     var drawer = model.getNewModel(pluginName);
