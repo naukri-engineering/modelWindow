@@ -114,7 +114,7 @@
                 _this.data('model', mask);
             });
 
-            options.model.on(isTransitionEndSupported, function() {
+            options.model.on(model.isTransitionEndSupported, function() {
                 if (options.model.hasClass(obj.options.close.anim)) {
                     model.closeTransEnd_cb.call(options.model.data('model'));
                 }
@@ -158,3 +158,5 @@
 
 }(jQuery));
 /*End of lightBox*/
+
+/** isTransitionSuppported referred from model */
